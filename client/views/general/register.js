@@ -5,7 +5,8 @@
 
 angular.module('after8')
 
-.controller('RegisterCtrl', ['$scope', '$firebaseAuth', function($scope, $firebaseAuth) {
+.controller('RegisterCtrl', ['$scope', '$location', 'CommonProp', '$firebaseAuth', function($scope, $location, CommonProp, $firebaseAuth) {
+  $scope.mesg = 'Hello';
   var firebaseObj = new Firebase('https://after8.firebaseio.com');
   var auth = $firebaseAuth(firebaseObj);
   $scope.signUp = function() {
@@ -17,7 +18,7 @@ angular.module('after8')
         .then(function() {
             // do things if success
             console.log('User creation success');
-            // $location.path('/');
+            $location.path('/');
         }, function(error) {
             // do things if failure
             console.log(error);

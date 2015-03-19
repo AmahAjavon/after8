@@ -2,12 +2,12 @@
 
 'use strict';
 
-
 angular.module('after8')
 
-.controller('HomeCtrl', ['$scope', '$firebaseAuth', function($scope, $firebaseAuth) {
+.controller('HomeCtrl', ['$scope', '$location', 'CommonProp', '$firebaseAuth', function($scope, $location, CommonProp, $firebaseAuth) {
   var firebaseObj = new Firebase('https://after8.firebaseio.com');
   var loginObj = $firebaseAuth(firebaseObj);
+  var user = '';
 
   $scope.fblogin = function() {
     firebaseObj.authWithOAuthPopup('facebook', function(error, authData) {
@@ -15,6 +15,8 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
+        CommonProp.setUser(user.password.email);
+        $location.path('/profile');
       }
     });
   };
@@ -25,6 +27,8 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
+        CommonProp.setUser(user.password.email);
+        $location.path('/profile');
       }
     });
   };
@@ -35,23 +39,12 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
+        CommonProp.setUser(user.password.email);
+        $location.path('/profile');
       }
     });
   };
 
-//   $scope.signUp = function() {
-//     firebaseObj.createUser({
-//     email: 'user.email',
-//     password: 'user.password'
-//   }, function(error, userData) {
-//     if (error) {
-//       console.log('Error creating user:', error);
-//     } else {
-//       console.log('Successfully created user account with uid:', userData.uid);
-//     }
-//
-//   });
-// };
 
   $scope.user = {};
   $scope.signIn = function(e) {
@@ -65,11 +58,24 @@ angular.module('after8')
   .then(function(user) {
       //Success callback
       console.log('Authentication successful');
-// CommonProp.setUser(user.password.email);
-// $location.path('/welcome');
+CommonProp.setUser(user.password.email);
+$location.path('/profile');
   }, function(error) {
       //Failure callback
       console.log('Authentication failure');
   });
 };
-}]);
+}])
+
+.service('CommonProp', function() {
+    var user = '';
+
+    return {
+        getUser: function() {
+            return user;
+        },
+        setUser: function(value) {
+            user = value;
+        }
+    };
+});

@@ -1,28 +1,82 @@
-.row
-  .col-lg-5.col-md-4.col-xs-3
-  .col-lg-2.col-md-4.col-xs-6
-    form.form-signin(name='todoForm', novalidate)
-      .form-group
-        label Email
-        input.form-control(type='email', name='email', ng-model='user.email')
-        p.help-block(ng-show='signinForm.email.$invalid') Enter a valid email.
-      .form-group
-        label Password
-        input.form-control(type='password', name='password', ng-model='user.password', ng-minlength='3')
-        p.help-block(ng-show='signinForm.password.$error.minlength') Min password length is 8 characters.
-      button.btn.btn-primary(ng-disabled='!user.email || !user.password', type='button', ng-click='signIn($event)') Sign In
-      .form-group
+.container#homepage
+  .row#homepageRow
+    br
+    h2.promo2 So... What's popping tonight?
+    p.promo1 Find out here...
+    .col-lg-5.col-md-4.col-xs-3
+    .col-lg-2.col-md-4.col-xs-6
+      form.form-signin(name='todoForm', novalidate)
+        .form-group
+          label Email
+          input.form-control(type='email', name='email', ng-model='user.email')
+          p.help-block(ng-show='signinForm.email.$invalid') Enter a valid email.
+        .form-group
+          label Password
+          input.form-control(type='password', name='password', ng-model='user.password', ng-minlength='3')
+          p.help-block(ng-show='signinForm.password.$error.minlength') Min password length is 8 characters.
+        button.btn.btn-primary(ng-disabled='!user.email || !user.password', type='button', ng-click='signIn($event)') Sign In
+        .form-group
+          br
+          a.btn.btn-facebook(ng-click='fblogin()')
+            i.fa.fa-facebook &nbsp; Sign in with Facebook 
+        .form-group
+          a.btn.btn-twitter(ng-click='twilogin()')
+            i.fa.fa-twitter &nbsp; Sign in with Twitter 
+        .form-group
+          a.btn.btn-google-plus(ng-click='goologin()')
+            i.fa.fa-google-plus &nbsp; Sign in with Google
+        .form-group
+          label Not a member?
+          a(href='#/register')  Sign Up
+          br 
+    .col-lg-5.col-md-4.col-xs-3  
+
+
+.container#second
+  .row
+    .col-md-6.center
+      .winnerPic
         br
-        a.btn.btn-facebook(ng-click='fblogin()')
-          i.fa.fa-facebook &nbsp; Sign in with Facebook 
-      .form-group
-        a.btn.btn-twitter(ng-click='twilogin()')
-          i.fa.fa-twitter &nbsp; Sign in with Twitter 
-      .form-group
-        a.btn.btn-google-plus(ng-click='goologin()')
-          i.fa.fa-google-plus &nbsp; Sign in with Google
-      .form-group
-        label Not a member?
-        a(href='#/register')  Sign Up 
-  .col-lg-5.col-md-4.col-xs-3  
-  
+        p.promo1 Party animal of the week
+        img.img-circle.img-responsive(src='http://animalslook.com/wp-content/uploads/2011/02/Party-cat.jpg', alt='reponsive-image')
+        br
+    .col-md-6.center
+      br
+      p.promo1 This might just be...
+      h2.promo2 The best night of your life!
+      a.btn.btn-primary.btn-lg(href='#/register') SIGN UP
+      .social
+        h3.sub-heading Follow Us
+        br
+        ul.social-icons
+          li
+            a(href='')
+              img.img-responsive(src='', alt='Picture')
+
+.container#third
+  .row
+    .promoEvents
+      br
+      h2.promo1 Get the scoop on the hottest events in your area
+      p Shows, festivals, concerts, from your favorite performers
+      br
+      
+.container#fourth
+  .row
+    .promoEvents
+      br
+      h2.promo1 Make party buddies and share your night out experiences
+      p The most voted party picture will be featured on the homepage as Picture Of The Week!
+      br
+
+.footer
+  .row#footer
+    .col-lg-1.col-md-1.col-xs-1
+    .col-lg-10.col-md-10.col-xs-10
+      ul.nav.navbar-nav
+        li: a(ui-sref='home'): i.fa.fa-home &nbsp; Home
+        li: a(ui-sref='register'): i.fa.fa-pencil-square-o &nbsp; Register
+        li: a(ui-sref='faq'): i.fa.fa-info &nbsp; Faq
+        li: a(ui-sref='contact'): i.fa.fa-at &nbsp; Contact
+    .col-lg-1.col-md-1.col-xs-1   
+          

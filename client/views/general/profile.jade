@@ -1,0 +1,68 @@
+.container
+  .row
+    .col-lg-5.col-md-4.col-xs-3
+    .col-lg-2.col-md-4.col-xs-6
+      p.profileName Welcome home 
+        b {{username}} !!
+      br
+      img.img-circle.img-responsive.img-center(src='http://singersroom.com/upload/2013/04/Beyonce-Goodwill-Partnership.jpg', alt='reponsive-image')
+    .col-lg-5.col-md-4.col-xs-3
+  .row
+    br
+    a.btn.btn-danger(href='') Party Animalz Feed
+    br
+    h3.promo1 So... What's popping?
+    br
+  .row
+    br
+    #carousel.carousel.slide(data-ride='carousel')
+
+      ol.carousel-indicators
+        li.active(data-target='#carousel', data-slide-to='0')
+        li(data-target='#carousel', data-slide-to='1')
+        li(data-target='#carousel', data-slide-to='2')
+
+      .carousel-inner(role='listbox')
+        .item.active
+          img(src='http://www.vogue.com/r/h_900,w_900/2014/12/02/victorias-secret-backstage-2014-11.jpg', alt='')
+          .carousel-caption
+            h3 First one
+            a.btn.btn-success(href='') Get a Cab
+            
+            a.btn.btn-info(href='') get a Ticket
+        .item
+          img(src='http://www.ryanseacrest.com/wp-content/uploads/2013/02/RealityShow2.jpg', alt='')
+          .carousel-caption
+            h3 Second one
+            a.btn.btn-success(href='') Get a Cab
+            
+            a.btn.btn-info(href='') get a Ticket
+        .item
+          img(src='https://sup3rjunior.files.wordpress.com/2013/03/130323-hyuk-6.jpg', alt='')
+          .carousel-caption
+            h3 Third one
+            a.btn.btn-success(href='') Get a Cab
+            
+            a.btn.btn-info(href='') get a Ticket
+
+      a.left.carousel-control(href='#carousel', role='button', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+        span.sr-only Previous
+      a.right.carousel-control(href='#carousel', role='button', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+        span.sr-only Next
+      br
+  .row
+    p searches
+    a.btn.btn-info(type='button', ng-click='firstLog()') first req
+    br
+    a.btn.btn-warning(type='button', ng-click='secondLog()') second req
+
+        
+          
+
+
+      
+
+
+  
