@@ -15,7 +15,7 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-        CommonProp.setUser(user.password.email);
+
         $location.path('/profile');
       }
     });
@@ -27,7 +27,7 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-        CommonProp.setUser(user.password.email);
+
         $location.path('/profile');
       }
     });
@@ -39,7 +39,7 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-        CommonProp.setUser(user.password.email);
+
         $location.path('/profile');
       }
     });
@@ -54,28 +54,28 @@ angular.module('after8')
     loginObj.$authWithPassword({
       email: username,
       password: password
-  })
-  .then(function(user) {
+    })
+    .then(function(user) {
       //Success callback
       console.log('Authentication successful');
-CommonProp.setUser(user.password.email);
-$location.path('/profile');
-  }, function(error) {
+      CommonProp.setUser(user.password.email);
+      $location.path('/profile');
+    }, function(error) {
       //Failure callback
       console.log('Authentication failure');
-  });
-};
+    });
+  };
 }])
 
 .service('CommonProp', function() {
-    var user = '';
+  var user = '';
 
-    return {
-        getUser: function() {
-            return user;
-        },
-        setUser: function(value) {
-            user = value;
-        }
-    };
+  return {
+    getUser: function() {
+      return user;
+    },
+    setUser: function(value) {
+      user = value;
+    }
+  };
 });

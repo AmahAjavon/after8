@@ -9,56 +9,140 @@
     .col-lg-5.col-md-4.col-xs-3
   .row
     br
-    a.btn.btn-danger(href='') Party Animalz Feed
+    a.btn.btn-danger(href='#/feed') Party Animalz Feed
     br
     h3.promo1 So... What's popping?
     br
+    p Your location: {{coords}}
+    h1
+      reverse-geocode(lat='40.730885', lng='-73.997383')
+    br
+    h3 Shows, Performances, Events in your area
   .row
     br
-    #carousel.carousel.slide(data-ride='carousel')
+    #carousel-generic.carousel.slide(data-ride='carousel')
 
       ol.carousel-indicators
-        li.active(data-target='#carousel', data-slide-to='0')
-        li(data-target='#carousel', data-slide-to='1')
-        li(data-target='#carousel', data-slide-to='2')
+        li.active(data-target='#carousel-generic', data-slide-to='0')
+        li(data-target='#carousel-generic', data-slide-to='1')
+        li(data-target='#carousel-generic', data-slide-to='2')
 
       .carousel-inner(role='listbox')
         .item.active
-          img(src='http://www.vogue.com/r/h_900,w_900/2014/12/02/victorias-secret-backstage-2014-11.jpg', alt='')
-          .carousel-caption
-            h3 First one
-            a.btn.btn-success(href='') Get a Cab
-            
-            a.btn.btn-info(href='') get a Ticket
+          img(src='http://www.vogue.com/r/h_900,w_900/2014/12/02/victorias-secret-backstage-2014-11.jpg', alt='', href='venue.url')
+          .carousel-caption.col-md-6
+            h4 title
+            h3 artists.artist
+            p startDate
+          .col-md-6.pull-right
+            h5 venue.name
+            h5 venue.location.city
+            h5 venue.location.street
+            h5 venue.location.postalcode 
+          a.btn.btn-success(href='uber') Get a Cab
+          a.btn.btn-info(href='venue.website') get a Ticket 
         .item
-          img(src='http://www.ryanseacrest.com/wp-content/uploads/2013/02/RealityShow2.jpg', alt='')
-          .carousel-caption
-            h3 Second one
-            a.btn.btn-success(href='') Get a Cab
-            
-            a.btn.btn-info(href='') get a Ticket
+          img(src='http://www.ryanseacrest.com/wp-content/uploads/2013/02/RealityShow2.jpg', alt='', href='venue.url')
+          .carousel-caption.col-md-6
+            h4 title
+            h3 artists.artist
+            p startDate
+          .col-md-6.pull-right
+            h5 venue.name
+            h5 venue.location.city
+            h5 venue.location.street
+            h5 venue.location.postalcode 
+          a.btn.btn-success(href='uber') Get a Cab
+          a.btn.btn-info(href='venue.website') get a Ticket 
         .item
-          img(src='https://sup3rjunior.files.wordpress.com/2013/03/130323-hyuk-6.jpg', alt='')
-          .carousel-caption
-            h3 Third one
-            a.btn.btn-success(href='') Get a Cab
-            
-            a.btn.btn-info(href='') get a Ticket
+          img(src='https://sup3rjunior.files.wordpress.com/2013/03/130323-hyuk-6.jpg', alt='', href='venue.url')
+          .carousel-caption.col-md-6
+            h4 title
+            h3 artists.artist
+            p startDate
+          .col-md-6.pull-right
+            h5 venue.name
+            h5 venue.location.city
+            h5 venue.location.street
+            h5 venue.location.postalcode 
+          a.btn.btn-success(href='uber') Get a Cab
+          a.btn.btn-info(href='venue.website') get a Ticket  
 
-      a.left.carousel-control(href='#carousel', role='button', data-slide='prev')
+      a.left.carousel-control(href='#carousel-generic', role='button', data-slide='prev')
         span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
         span.sr-only Previous
-      a.right.carousel-control(href='#carousel', role='button', data-slide='next')
+      a.right.carousel-control(href='#carousel-generic', role='button', data-slide='next')
         span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
         span.sr-only Next
-      br
-  .row
-    p searches
-    a.btn.btn-info(type='button', ng-click='firstLog()') first req
-    br
-    a.btn.btn-warning(type='button', ng-click='secondLog()') second req
+        br
 
-        
+  .row
+    br
+    h3 Hit the Bars, Nightclubs in town tonight 
+    br
+    #carousel-generic.carousel.slide(data-ride='carousel')
+
+      ol.carousel-indicators
+        li.active(data-target='#carousel-generic', data-slide-to='0')
+        li(data-target='#carousel-generic', data-slide-to='1')
+        li(data-target='#carousel-generic', data-slide-to='2')
+
+      .carousel-inner(role='listbox')
+        .item.active
+          img(src='http://www.vogue.com/r/h_900,w_900/2014/12/02/victorias-secret-backstage-2014-11.jpg', alt='', href='venue.url')
+          .carousel-caption.col-md-6
+            h4 title
+            h3 artists.artist
+            p startDate
+          .col-md-6.pull-right
+            h5 venue.name
+            h5 venue.location.city
+            h5 venue.location.street
+            h5 venue.location.postalcode 
+          a.btn.btn-success(href='uber') Get a Cab
+          a.btn.btn-info(href='venue.website') Get a Ticket 
+        .item
+          img(src='http://www.ryanseacrest.com/wp-content/uploads/2013/02/RealityShow2.jpg', alt='', href='venue.url')
+          .carousel-caption.col-md-6
+            h4 title
+            h3 artists.artist
+            p startDate
+          .col-md-6.pull-right
+            h5 venue.name
+            h5 venue.location.city
+            h5 venue.location.street
+            h5 venue.location.postalcode 
+          a.btn.btn-success(href='uber') Get a Cab
+          a.btn.btn-info(href='venue.website') Get a Ticket 
+        .item
+          img(src='https://sup3rjunior.files.wordpress.com/2013/03/130323-hyuk-6.jpg', alt='', href='venue.url')
+          .carousel-caption.col-md-6
+            h4 title
+            h3 artists.artist
+            p startDate
+          .col-md-6.pull-right
+            h5 venue.name
+            h5 venue.location.city
+            h5 venue.location.street
+            h5 venue.location.postalcode 
+          a.btn.btn-success(href='uber') Get a Cab
+          a.btn.btn-info(href='venue.website') Get a Ticket  
+
+      a.left.carousel-control(href='#carousel-generic', role='button', data-slide='prev')
+        span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+        span.sr-only Previous
+      a.right.carousel-control(href='#carousel-generic', role='button', data-slide='next')
+        span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+        span.sr-only Next
+        br
+    .row
+      br
+      p searches
+      a.btn.btn-info(type='button', ng-click='firstLog()') first req
+      br
+      a.btn.btn-warning(type='button', ng-click='secondLog()') second req
+  .row
+            
           
 
 
