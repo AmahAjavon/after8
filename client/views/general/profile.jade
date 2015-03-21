@@ -23,19 +23,19 @@
       label.labelTag list of Events
       br
       .carousel-inner
-        .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
-          img.img-responsive.img-center(src='')
+        .item(ng-class='{active:!$index}', ng-repeat='show in shows')
+          img.img-responsive.img-center(src='{{show.image[3]["#text"]}}')
           .carousel-caption.col-md-6
-            h4 {{title}}
-            h3 {{artists.artist}}
-            p {{startDate}}
+            h3 {{show.title}}
+            h4 {{show.artists.artist}}
+            p {{show.startDate}}
           .col-md-6.pull-right
-            h5 {{venue.name}}
-            h5 {{venue.location.city}}
-            h5 {{venue.location.street}}
-            h5 {{venue.location.postalcode}}
+            h5 {{show.name}}
+            h5 {{show.venue.location.city}}
+            h5 {{show.venue.location.street}}
+            h5 {{show.venue.location.postalcode}}
           a.btn.btn-success(href='{{uber}}') Get a Cab
-          a.btn.btn-info(href='{{venue.url}}') Get Tickets 
+          a.btn.btn-info(href='{{show.website}}') Get Tickets 
       span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
           span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
           span.sr-only Previous
@@ -70,8 +70,8 @@
           span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
           span.sr-only Next
   .row
-    a.btn.btn-warning(ng-click='firstLog()') lastFM
-    a.btn.btn-danger(ng-click='secondLog()') foursquare 
+    a.btn.btn-warning(ng-click='lastFM()') lastFM
+    a.btn.btn-danger(ng-click='foursquare()') foursquare 
             
           
 
