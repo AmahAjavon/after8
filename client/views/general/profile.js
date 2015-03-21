@@ -20,26 +20,29 @@ angular.module('after8')
     });
 
   };
-
+  console.log('before it happens');
   $scope.secondLog = function() {
-
-    // $scope.foursquare = 'https://api.foursquare.com/v2/venues/search?ll=';
-    // $scope.latlon = $scope.coords.latitude + ',' + $scope.coords.longitude;
-    // $scope.tokenClub = '&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319';
-
-
-    //  $scope.venue.clubName = response.venues[0].name,
-    //  $scope.venue.clubCity = response.venues[0].location.city,
-    //  $scope.venue.shortName = response.venues[0].categories[0].shortName,
-    //  $scope.venue.checkinsCount = response.venues[0].stats.checkinsCount,
-    //  $scope.venue.usersCount = response.venues[0].stats.usersCount,
-    //  $scope.venue.clubUrl = response.venues[0].categories[0].icon.prefix + '/400x400/' + response.venues[0].categories[0].icon.suffix,
-    //  $scope.venue.latlonclub = response.venues[0].location.lat + ',' + response.venues[0].location.lng
-      console.log('before it happens')
     $http.get('https://api.foursquare.com/v2/venues/search?ll=' + $scope.coords.latitude + ',' + $scope.coords.longitude + '&query=nightclub&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319')
     .success(function(data, status, headers, config) {
-        $scope.venues = data.venues
-       console.log('venues: ' + $cope.venues)
+      console.log(data);
+      $scope.venues = data.response.venues;
+      console.log('here', $scope.venues[0].categories[0].icon);
+
+      // for (var i = 0; i< $scope.venues.length; i++) {
+      //   $scope.venue.name = data.response.venues[i].name;
+      //   $scope.venue.city = data.response.venues[i].location.city;
+      //   $scope.venue.shortName = data.response.venues[i].categories[0].shortName;
+      //   $scope.venue.checkinsCount = data.response.venues[i].stats.checkinsCount;
+      //   $scope.venue.usersCount = data.response.venues[i].stats.usersCount;
+      //   $scope.venue.icon = data.response.venues[i].categories[0].icon.prefix + '/400x400/' + data.response.venues[i].categories[0].icon.suffix;
+      //   $scope.venue.coords = data.response.venues[i].location.lat + ',' + data.response.venues[i].location.lng;
+      //   $scope.venue.url = data.response.venues[i].url;
+        // console.log('image',data.response.venues[0].categories[0].icon);
+        // console.log('image',data.response.venues[0].categories[0].icon.prefix);
+        // console.log('image',data.response.venues[0].categories[0].icon.suffix);
+
+
+      console.log('venue image');
 
     }).error(function(data) {
       console.log('could not find this url');
@@ -48,6 +51,17 @@ angular.module('after8')
   };
 
 }]);
+
+
+
+
+// $scope.foursquare = 'https://api.foursquare.com/v2/venues/search?ll=';
+// $scope.latlon = $scope.coords.latitude + ',' + $scope.coords.longitude;
+// $scope.tokenClub = '&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319';
+
+
+
+
 
 // angular.module('after8', [])
 //     .directive('reverseGeocode', function () {
