@@ -1,5 +1,5 @@
-// 'use strict';
-//
+'use strict';
+
 // angular.module('after8', [])
 //     .directive('reverseGeocode', function () {
 //         return {

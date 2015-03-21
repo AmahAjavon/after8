@@ -20,12 +20,12 @@
     h3 Shows, Performances, Events in your area
   .row
     br
-    #carousel-generic.carousel.slide(data-ride='carousel')
+    #carousel-events.carousel.slide(data-ride='carousel')
 
       ol.carousel-indicators
-        li.active(data-target='#carousel-generic', data-slide-to='0')
-        li(data-target='#carousel-generic', data-slide-to='1')
-        li(data-target='#carousel-generic', data-slide-to='2')
+        li.active(data-target='#carousel-events', data-slide-to='0')
+        li(data-target='#carousel-events', data-slide-to='1')
+        li(data-target='#carousel-events', data-slide-to='2')
 
       .carousel-inner(role='listbox')
         .item.active
@@ -68,10 +68,10 @@
           a.btn.btn-success(href='uber') Get a Cab
           a.btn.btn-info(href='venue.website') get a Ticket  
 
-      a.left.carousel-control(href='#carousel-generic', role='button', data-slide='prev')
+      span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
         span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
         span.sr-only Previous
-      a.right.carousel-control(href='#carousel-generic', role='button', data-slide='next')
+      span.right.carousel-control(href='#carousel-events', role='button', data-slide='next')
         span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
         span.sr-only Next
         br
@@ -80,68 +80,31 @@
     br
     h3 Hit the Bars, Nightclubs in town tonight 
     br
-    #carousel-generic.carousel.slide(data-ride='carousel')
-
-      ol.carousel-indicators
-        li.active(data-target='#carousel-generic', data-slide-to='0')
-        li(data-target='#carousel-generic', data-slide-to='1')
-        li(data-target='#carousel-generic', data-slide-to='2')
-
-      .carousel-inner(role='listbox')
-        .item.active
-          img(src='http://www.vogue.com/r/h_900,w_900/2014/12/02/victorias-secret-backstage-2014-11.jpg', alt='', href='venue.url')
-          .carousel-caption.col-md-6
-            h4 title
-            h3 artists.artist
-            p startDate
-          .col-md-6.pull-right
-            h5 venue.name
-            h5 venue.location.city
-            h5 venue.location.street
-            h5 venue.location.postalcode 
-          a.btn.btn-success(href='uber') Get a Cab
-          a.btn.btn-info(href='venue.website') Get a Ticket 
-        .item
-          img(src='http://www.ryanseacrest.com/wp-content/uploads/2013/02/RealityShow2.jpg', alt='', href='venue.url')
-          .carousel-caption.col-md-6
-            h4 title
-            h3 artists.artist
-            p startDate
-          .col-md-6.pull-right
-            h5 venue.name
-            h5 venue.location.city
-            h5 venue.location.street
-            h5 venue.location.postalcode 
-          a.btn.btn-success(href='uber') Get a Cab
-          a.btn.btn-info(href='venue.website') Get a Ticket 
-        .item
-          img(src='https://sup3rjunior.files.wordpress.com/2013/03/130323-hyuk-6.jpg', alt='', href='venue.url')
-          .carousel-caption.col-md-6
-            h4 title
-            h3 artists.artist
-            p startDate
-          .col-md-6.pull-right
-            h5 venue.name
-            h5 venue.location.city
-            h5 venue.location.street
-            h5 venue.location.postalcode 
-          a.btn.btn-success(href='uber') Get a Cab
-          a.btn.btn-info(href='venue.website') Get a Ticket  
-
-      a.left.carousel-control(href='#carousel-generic', role='button', data-slide='prev')
-        span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-        span.sr-only Previous
-      a.right.carousel-control(href='#carousel-generic', role='button', data-slide='next')
-        span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-        span.sr-only Next
-        br
-    .row
+    #carousel-clubs.carousel(style='margin-left: 20px;')
+      label.labelTag list of clubs
       br
-      p searches
-      a.btn.btn-info(type='button', ng-click='firstLog()') first req
-      br
-      a.btn.btn-warning(type='button', ng-click='secondLog()') second req
+      .carousel-inner
+        .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
+          img.img-responsive(src='')
+          .carousel-caption.col-md-6
+            h3 {{venue.clubName}}
+            h4 {{venue.clubCity}}
+          .col-md-6.pull-right
+            h5 {{venue.shortName}}
+            h5 {{venue.checkinsCount}}
+            h5 {{venue.usersCount}}
+
+          a.btn.btn-success(href='{{uber}}') Get a Cab
+          a.btn.btn-info(href='{{venue.clubUrl}}') More infos 
+      span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
+          span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+          span.sr-only Previous
+      span.right.carousel-control(href='#carousel-clubs', role='button', data-slide='next')
+          span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+          span.sr-only Next
   .row
+    a.btn.btn-warning(ng-click='firstLog()') lastFM
+    a.btn.btn-danger(ng-click='secondLog()') foursquare 
             
           
 

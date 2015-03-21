@@ -4,10 +4,10 @@ angular.module('after8')
 
 .controller('ProfileCtrl', ['$scope', 'geolocation', 'CommonProp', '$http', function($scope, geolocation, CommonProp, $http) {
   $scope.username = CommonProp.getUser();
-  console.log('aj');
+
   geolocation.getLocation().then(function(data){
     $scope.coords = data.coords;
-    console.log('here it is ', $scope.coords);
+    console.log('here it is ', $scope.coords.latitude + ' ' + $scope.coords.longitude);
 
   });
 
@@ -22,18 +22,32 @@ angular.module('after8')
   };
 
   $scope.secondLog = function() {
-    $http.get('https://api.foursquare.com/v2/venues/search?ll=37.495408399999995,-121.91778540000001&query=nightlife-spot&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319')
+
+    // $scope.foursquare = 'https://api.foursquare.com/v2/venues/search?ll=';
+    // $scope.latlon = $scope.coords.latitude + ',' + $scope.coords.longitude;
+    // $scope.tokenClub = '&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319';
+
+
+    //  $scope.venue.clubName = response.venues[0].name,
+    //  $scope.venue.clubCity = response.venues[0].location.city,
+    //  $scope.venue.shortName = response.venues[0].categories[0].shortName,
+    //  $scope.venue.checkinsCount = response.venues[0].stats.checkinsCount,
+    //  $scope.venue.usersCount = response.venues[0].stats.usersCount,
+    //  $scope.venue.clubUrl = response.venues[0].categories[0].icon.prefix + '/400x400/' + response.venues[0].categories[0].icon.suffix,
+    //  $scope.venue.latlonclub = response.venues[0].location.lat + ',' + response.venues[0].location.lng
+      console.log('before it happens')
+    $http.get('https://api.foursquare.com/v2/venues/search?ll=' + $scope.coords.latitude + ',' + $scope.coords.longitude + '&query=nightclub&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319')
     .success(function(data, status, headers, config) {
-      console.log(data);
+        $scope.venues = data.venues
+       console.log('venues: ' + $cope.venues)
+
     }).error(function(data) {
       console.log('could not find this url');
     });
 
   };
+
 }]);
-
-
-
 
 // angular.module('after8', [])
 //     .directive('reverseGeocode', function () {
