@@ -12,9 +12,6 @@
     a.btn.btn-danger(href='#/feed') Party Animalz Feed
     br
     h3.promo1 So... What's popping?
-    br
-    p Your location: {{coords}}
-    br
   .row
     br
     h3 Shows, Performances, Events in your area 
@@ -25,7 +22,7 @@
       .carousel-inner
         .item(ng-class='{active:!$index}', ng-repeat='show in shows')
           img.img-responsive.img-center(src='{{show.image[3]["#text"]}}')
-          .carousel-caption.col-md-6
+          .carousel-caption.col-md-6.pull-left
             h3 {{show.title}}
             h4 {{show.artists.artist}}
             p {{show.startDate}}
@@ -34,7 +31,8 @@
             h5 {{show.venue.location.city}}
             h5 {{show.venue.location.street}}
             h5 {{show.venue.location.postalcode}}
-          a.btn.btn-success(href='{{uber}}') Get a Cab
+          a.btn.btn-success#uber(href='{{uber}}') Get a ride
+      
           a.btn.btn-info(href='{{show.website}}') Get Tickets 
       span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
           span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
@@ -53,7 +51,7 @@
       .carousel-inner
         .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
           img.img-responsive.img-center(src='')
-          .carousel-caption.col-md-6
+          .carousel-caption.col-md-6.pull-left
             h3 {{venue.name}}
             h4 {{venue.location.city}}
           .col-md-6.pull-right
@@ -61,7 +59,8 @@
             h5 Foursquare Users checked-in: {{venue.stats.checkinsCount}}
             h5 Foursquare Users count: {{venue.stats.usersCount}}
 
-          a.btn.btn-success(href='{{uber}}') Get a Cab
+          a.btn.btn-success#uber(href='{{uber}}') Get a ride
+            
           a.btn.btn-info(href='{{venue.url}}') More infos 
       span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
           span.glyphicon.glyphicon-chevron-left(aria-hidden='true')

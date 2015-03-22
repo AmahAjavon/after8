@@ -17,7 +17,7 @@ angular.module('after8')
       console.log(data);
       $scope.shows  = data.events.event;
       // $scope.artists.artist = toString(data.artist);
-      console.log(data.events.event[0].image[2]["#text"])
+      // console.log(data.events.event[0].image[3]['#text']);
     }).error(function(data) {
       console.log('could not find this url');
     });
@@ -27,16 +27,21 @@ angular.module('after8')
   $scope.foursquare = function() {
     $http.get('https://api.foursquare.com/v2/venues/search?ll=' + $scope.coords.latitude + ',' + $scope.coords.longitude + '&query=nightclub&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319')
     .success(function(data, status, headers, config) {
-      console.log(data);
+      console.log(data.response);
       $scope.venues = data.response.venues;
-      console.log('here', $scope.venues[0].categories[0].icon);
-
-      console.log('venue image');
 
     }).error(function(data) {
       console.log('could not find this url');
     });
 
+
+
+    // $http.get('https://maps.googleapis.com/maps/api/place/radarsearch/json?location='+ $scope.coords.latitude + ',' + $scope.coords.longitude +'&radius=5000&types=nightclub|bar&key=AIzaSyBo3d6CeOkKIOM7LJKtaYqmMpmPgpm0IIo')
+    // .success(function(data, status, headers, config) {
+    //   console.log(data);
+    // }.error(function(data) {
+    //   console.log('could not find this url');
+    // })
   };
 
 }]);
