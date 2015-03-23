@@ -1,0 +1,84 @@
+.row
+  br
+  a.btn.btn-danger(href='#/profile') Profile Page
+  br
+
+.row
+  h3 So... What's popping?
+  .col-lg-3.col-md-2.col-xs-1
+  .col-lg-6.col-md-8.col-xs-10.chat-input
+    form(name='todoForm', novalidate)
+      .form-group.chat-toolbar
+        label(for='nameInput')
+        input#nameInput(ng-model='name', type='text', placeholder='enter a username...')
+      .form-group
+        input#messageInput(ng-model='msg', type='text', placeholder='Type a message...')
+        br
+      .form-group#form1(runat='server')
+        input#imgInp(type='file')
+      .form-group
+        img#picture(src='#', alt='image goes here')  
+      .form-group
+        a.btn.btn-info(ng-click='addMessage()') Add it
+        br        
+  .col-lg-3.col-md-2.col-xs-1      
+
+.row
+  .col-lg-3.col-md-2.col-xs-1
+  .col-lg-6.col-md-8.col-xs-10.chat-container
+    .form-group      
+      ul#messages.chat-messages
+        li#message(ng-repeat='msg in messages')
+          strong.chat-username {{ msg.from }}
+          |           says: {{ msg.body }}
+
+  .col-lg-3.col-md-2.col-xs-1
+
+
+
+//-     
+//-     h3.promo1 So... What's popping?
+//-     br
+//- .container
+//-   .row
+//-     .col-lg-3.col-md-2.col-sm-1.col-xs-1
+//-     .col-lg-6.col-md-8.col-sm-10.col-xs-10
+//-       .userImg
+//-         img.img-responsive(src='http://www.onsecrethunt.com/wallpaper/wp-content/uploads/2013/04/Yeh-Jawaani-Hai-Deewani-Night-Party-HD-Wallpaper.jpg', alt='')
+//-         p.promo1 Here is what my night looked like!
+//-         a(href='#') 
+//-           i.fa.fa-thumbs-o-up &nbsp; 15 votes
+//-       
+//-     .col-lg-3.col-md-2.col-sm-1.col-xs-1
+//- .container
+//-   .row
+//-     br
+//-     br      
+//- 
+//- .container
+//-   .row
+//-     .col-lg-3.col-md-2.col-sm-1.col-xs-1
+//-     .col-lg-6.col-md-8.col-sm-10.col-xs-10
+//-       .userImg
+//-         img.img-responsive(src='http://www.viceland.com/blogs/nl_photoblog/files/2010/03/vice_mardi_grass_rdam-37-667x446.jpg', alt='')
+//-         p.promo1 We had a great time!
+//-         a(href='#') 
+//-           i.fa.fa-thumbs-o-up &nbsp; 8 votes 
+//-             
+//-     .col-lg-3.col-md-2.col-sm-1.col-xs-1
+//-       
+//- .container
+//-   .row
+//-     br
+//-     br       
+//- .container
+//-   .row      
+//-     form
+//-       input(type='text', ng-model='feed.title')
+//-       input(type='text', ng-model='feed.url')
+//-       input(type='submit', value='Add Feed')
+//-         
+//- .container
+//-   .row
+//-     br
+//-     br

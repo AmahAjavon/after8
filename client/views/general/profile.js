@@ -12,7 +12,7 @@ angular.module('after8')
   });
 
   $scope.lastFM = function() {
-    $http.get('http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&api_key=b93c2762033e97bcdf97392e7d0dd42c&venue=8908030&format=json')
+    $http.get('http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=1000&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json')
     .success(function(data, status, headers, config) {
       console.log(data);
       $scope.shows  = data.events.event;
@@ -23,6 +23,7 @@ angular.module('after8')
     });
 
   };
+
   console.log('before it happens');
   $scope.foursquare = function() {
     $http.get('https://api.foursquare.com/v2/venues/search?ll=' + $scope.coords.latitude + ',' + $scope.coords.longitude + '&query=nightclub&oauth_token=0ITXVPPFAN00QFV5KF1RFWBXGCTROVMQ1FS4YC0OHHPRYDX5&v=20150319')
@@ -35,13 +36,15 @@ angular.module('after8')
     });
 
 
-
-    // $http.get('https://maps.googleapis.com/maps/api/place/radarsearch/json?location='+ $scope.coords.latitude + ',' + $scope.coords.longitude +'&radius=5000&types=nightclub|bar&key=AIzaSyBo3d6CeOkKIOM7LJKtaYqmMpmPgpm0IIo')
-    // .success(function(data, status, headers, config) {
-    //   console.log(data);
-    // }.error(function(data) {
-    //   console.log('could not find this url');
-    // })
   };
+//   $scope.google = function() {
+//   $http.get('https://maps.googleapis.com/maps/api/place/radarsearch/json?location='+ $scope.coords.latitude + ',' + $scope.coords.longitude +'&radius=5000&types=nightclub|bar&key=AIzaSyBo3d6CeOkKIOM7LJKtaYqmMpmPgpm0IIo')
+//   .success(function(data, status, headers, config) {
+//     console.log(data);
+//   }.error(function(data) {
+//     console.log('could not find this url');
+//   })
+//
+// }
 
 }]);

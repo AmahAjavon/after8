@@ -33,7 +33,7 @@
             h5 {{show.venue.location.postalcode}}
           a.btn.btn-success#uber(href='{{uber}}') Get a ride
       
-          a.btn.btn-info(href='{{show.website}}') Get Tickets 
+          a.btn.btn-info(href='{{show.url}}') Get Tickets 
       span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
           span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
           span.sr-only Previous
@@ -56,6 +56,7 @@
             h4 {{venue.location.city}}
           .col-md-6.pull-right
             h5 {{venue.categories[0].shortName}}
+            h5 Address: {{venue.location.formattedAddress}}
             h5 Foursquare Users checked-in: {{venue.stats.checkinsCount}}
             h5 Foursquare Users count: {{venue.stats.usersCount}}
 
@@ -70,7 +71,8 @@
           span.sr-only Next
   .row
     a.btn.btn-warning(ng-click='lastFM()') lastFM
-    a.btn.btn-danger(ng-click='foursquare()') foursquare 
+    a.btn.btn-danger(ng-click='foursquare()') foursquare
+    a.btn.btn-info(ng-click='google()') google 
             
           
 
