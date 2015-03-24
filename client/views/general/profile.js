@@ -40,6 +40,25 @@ angular.module('after8')
   };
 });
 
+  $scope.uploadFile = function(files) {
+      var fd = new FormData();
+      //Take the first selected file
+      fd.append("file", files[0]);
+
+      $http.post(uploadUrl, fd, {
+          withCredentials: true,
+          headers: {'Content-Type': undefined },
+          transformRequest: angular.identity
+      }).success(function(data, status, headers, config) {
+        console.log(data);
+        $scope.image = data.image;
+      }).error(function(data) {
+        console.log('Could not upload');
+      });
+
+  };
+
+
   // 'http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=1000&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json'
   // 'http://api.songkick.com/api/3.0/events.json?location=geo:' + $scope.coords.latitude +','+ $scope.coords.longitude + '&apikey=92Bfe1LmFv9AbRER'
 
@@ -54,3 +73,20 @@ angular.module('after8')
 // }
 
 }]);
+
+  // angular.module('after8')
+  //
+  // .config(['flowFactoryProvider', function (flowFactoryProvider) {
+  //   flowFactoryProvider.defaults = {
+  //     target: 'upload.php',
+  //     permanentErrors: [404, 500, 501],
+  //     maxChunkRetries: 1,
+  //     chunkRetryInterval: 5000,
+  //     simultaneousUploads: 4,
+  //     singleFile: true
+  //   };
+  //   flowFactoryProvider.on('catchAll', function (event) {
+  //     console.log('catchAll', arguments);
+  //   });
+  //
+  // }]);

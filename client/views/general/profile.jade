@@ -16,13 +16,28 @@ nav.navbar.navbar-inverse
   .row
     .col-xs-12        
       .row
-        .col-lg-5.col-md-4.col-xs-3
-        .col-lg-2.col-md-4.col-xs-6
+        .col-lg-5.col-md-5.col-sm-5.col-xs-5
+        .col-lg-2.col-md-2.col-sm-2.col-xs-2
           p.profileName Welcome home 
             b {{username}} !!
           br
-          img.img-circle.img-responsive.img-center(src='{{user.image}}', alt='reponsive-image')
-        .col-lg-5.col-md-4.col-xs-3
+          div(flow-init='{singleFile:true}', flow-file-added='!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]')
+            h3
+              a.anchor(name='image-example', href='#image-example')
+                span.octicon.octicon-link
+              | 
+            .thumbnail(ng-show='!$flow.files.length')
+              img(src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image')
+            .thumbnail(ng-show='$flow.files.length')
+              img(flow-img='$flow.files[0]')
+            div
+              span.btn.btn-primary(ng-show='!$flow.files.length', flow-btn='') Select image
+              span.btn.btn-info(ng-show='$flow.files.length', flow-btn='') Change
+              span.btn.btn-danger(ng-show='$flow.files.length', ng-click='$flow.cancel()')
+                | Remove
+            p
+              | Only PNG,GIF,JPG,JEPG files allowed.
+        .col-lg-5.col-md-5.col-sm-5.col-xs-5
       .row
         br
         a.btn.btn-danger(href='#/feed') Party Animalz Feed
@@ -38,11 +53,11 @@ nav.navbar.navbar-inverse
           .carousel-inner
             .item(ng-class='{active:!$index}', ng-repeat='show in shows')
               .col-lg-4.col-md-4.col-sm-6.col-xs-6
-                img.img-responsive.img-center(src='{{show.image[3]["#text"]}}')
+                img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='300', height='300')
               .col-md-8.col-md-8.col-sm-6.col-xs-6
                 .row
                   h3 {{show.title}}
-                  h4 {{show.artists.artist}}
+                  h4 {{(show.artists.artist).join()}}
                   p {{show.startDate}}
                 .row
                   h5 {{show.name}}
@@ -69,14 +84,14 @@ nav.navbar.navbar-inverse
           .carousel-inner
             .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
               .col-lg-4.col-md-4.col-sm-6.col-xs-6
-                img.img-responsive.img-center(src='')
+                img.img-responsive.img-center(src='', width='300', height='300')
               .col-md-8.col-md-8.col-sm-6.col-xs-6
                 .row
                   h3 {{venue.name}}
                   h4 {{venue.location.city}}
                 .row
                   h5 {{venue.categories[0].shortName}}
-                  h5 Address: {{venue.location.formattedAddress}}
+                  h5 Address: {{(venue.location.formattedAddress).join()}}
                   h5 Foursquare Users checked-in: {{venue.stats.checkinsCount}}
                   h5 Foursquare Users count: {{venue.stats.usersCount}}
 

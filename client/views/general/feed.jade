@@ -23,17 +23,19 @@ nav.navbar.navbar-inverse
         h3 So... What's popping?
         .col-lg-3.col-md-2.col-xs-1
         .col-lg-6.col-md-8.col-xs-10.chat-input
-          form(name='todoForm', novalidate)
+          form
             .form-group.chat-toolbar
               label(for='nameInput')
               input#nameInput(ng-model='name', type='text', placeholder='enter a username...')
             .form-group
               input#messageInput(ng-model='msg', type='text', placeholder='Type a message...')
               br
-            .form-group#form1(runat='server')
-              input#imgInp(type='file')
             .form-group
-              img#picture(src='#', alt='image goes here')  
+              #spin
+                h1 Add a picture
+                input#file-upload.hidden(type='file', accept='image/*', capture='camera')
+                br
+                img#pano.pano 
             .form-group
               a.btn.btn-info(ng-click='addMessage()') Add it
               br        

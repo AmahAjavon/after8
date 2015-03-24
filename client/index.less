@@ -1,6 +1,5 @@
 @media screen and (max-device-width: 800px) {
-  body { background: url(/views/general/bg.jpg) #000 no-repeat center center fixed; }
-#bgvid { display: none; }
+  body { background-color: white no-repeat center center fixed; }
 }
 
 body{
@@ -17,8 +16,6 @@ body{
 .description{
   text align: right;
 }
-
-video { display: block; }
 
 #homepage{
   left: 0;
@@ -54,7 +51,7 @@ video { display: block; }
   height: 100%;
   border: 0px;
   margin-bottom: 0;
-  background-color: yellow;
+  background: url(/views/general/bg.jpg) no-repeat center center fixed;
 }
 
 #fourth{
@@ -65,11 +62,6 @@ video { display: block; }
   border: 0px;
   margin-bottom: 0;
   background-color: white;
-}
-
-form{
-  // border: 1px dotted green;
-  // opacity: .5;
 }
 
 .row{
@@ -86,8 +78,8 @@ th{
   color: #bf3e11;
 }
 
-#logo{
-  font-size: 30px;
+.logo{
+  font-size: 50px;
   text-shadow: 1px 1px 0 #fff
   color: red;
 }
@@ -212,7 +204,22 @@ input{
   // padding: 20px 100px 40px 20px;
 }
 
+.social-icons{
+  list-style-type: none;
+}
 
+.hidden {
+  display: none;
+}
+
+.pano {
+  height: 85%;
+  max-height: 85%;
+}
+
+#spin {
+  height: 60px;
+}
 
 // #uber{
 //   background-image: url('/img/UBER_API_Button_2x_Grey_hard edge.png');

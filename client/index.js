@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('after8', ['ui.router', 'ngMessages', 'geolocation', 'firebase'])
+angular.module('after8', ['ui.router', 'ngMessages', 'geolocation', 'firebase', 'flow'])
   .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider){
     $urlRouterProvider.otherwise('/');
 
@@ -8,7 +8,7 @@ angular.module('after8', ['ui.router', 'ngMessages', 'geolocation', 'firebase'])
       .state('home', {url:'/', templateUrl:'/views/general/home.html', controller: 'HomeCtrl'})
       .state('faq', {url:'/faq', templateUrl:'/views/general/faq.html'})
       .state('contact', {url:'/contact', templateUrl:'/views/general/contact.html'})
-      .state('signout', {url:'/', templateUrl:'/views/general/home.html'})
+      .state('signout', {url:'/', templateUrl:'/views/home/home.html'})
       .state('register', {url:'/register', templateUrl:'/views/general/register.html', controller: 'RegisterCtrl'})
       .state('profile', {url:'/profile', templateUrl:'/views/general/profile.html', controller: 'ProfileCtrl'})
       .state('feed', {url:'/feed', templateUrl:'/views/feed/feed.html', controller:'ChatCtrl'})
