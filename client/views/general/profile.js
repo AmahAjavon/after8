@@ -9,10 +9,12 @@ angular.module('after8')
     $scope.coords = data.coords;
     console.log('here it is ', $scope.coords.latitude + ' ' + $scope.coords.longitude);
 
-  });
+
+
+
 
   $scope.lastFM = function() {
-    $http.get('http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=1000&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json')
+    $http.get('http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=1000&limit=20&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json')
     .success(function(data, status, headers, config) {
       console.log(data);
       $scope.shows  = data.events.event;
@@ -35,8 +37,12 @@ angular.module('after8')
       console.log('could not find this url');
     });
 
-
   };
+});
+
+  // 'http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=1000&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json'
+  // 'http://api.songkick.com/api/3.0/events.json?location=geo:' + $scope.coords.latitude +','+ $scope.coords.longitude + '&apikey=92Bfe1LmFv9AbRER'
+
 //   $scope.google = function() {
 //   $http.get('https://maps.googleapis.com/maps/api/place/radarsearch/json?location='+ $scope.coords.latitude + ',' + $scope.coords.longitude +'&radius=5000&types=nightclub|bar&key=AIzaSyBo3d6CeOkKIOM7LJKtaYqmMpmPgpm0IIo')
 //   .success(function(data, status, headers, config) {

@@ -1,5 +1,5 @@
 @media screen and (max-device-width: 800px) {
-  body { background: url(/views/general/party.jpg) #000 no-repeat center center fixed; }
+  body { background: url(/views/general/bg.jpg) #000 no-repeat center center fixed; }
 #bgvid { display: none; }
 }
 
@@ -24,7 +24,7 @@ video { display: block; }
   left: 0;
   right: 0;
   z-index: 1;
-  // background: url(/views/general/party.jpg) no-repeat center center fixed;
+  background: url(/views/general/bg.jpg) no-repeat center center fixed;
   background-size: cover;
   border: 0px;
   margin: 0px;
@@ -32,6 +32,7 @@ video { display: block; }
   width: 100%;
   height: 100%;
   margin-top: 0;
+  text-align: center;
 }
 
 #editor{
@@ -85,9 +86,10 @@ th{
   color: #bf3e11;
 }
 
-h1{
-  font-size: 20px;
+#logo{
+  font-size: 30px;
   text-shadow: 1px 1px 0 #fff
+  color: red;
 }
 
 .promo1{
@@ -107,13 +109,13 @@ h2{
 h3.ng-binding{
   color: red;
   font-family: "HelveticaNeue";
-  text-shadow: 1px 1px 1px #000,2px 2px 0 #000,3px 3px 0 #000;
+  // text-shadow: 1px 1px 1px #000,2px 2px 0 #000,3px 3px 0 #000;
 }
 
 h4.ng-binding{
   color: red;
   font-family: "HelveticaNeue";
-  text-shadow: 1px 1px 1px #000,2px 2px 0 #000,3px 3px 0 #000;
+  // text-shadow: 1px 1px 1px #000,2px 2px 0 #000,3px 3px 0 #000;
 }
 
 h5.ng-binding{
@@ -124,7 +126,7 @@ h5.ng-binding{
 p.ng-binding{
   color: gray;
   font-size: 22px;
-  text-shadow: 1px 1px 1px #000,2px 2px 0 #000,3px 3px 0 #000;
+  // text-shadow: 1px 1px 1px #000,2px 2px 0 #000,3px 3px 0 #000;
 }
 
 td{
@@ -180,7 +182,7 @@ div#navbar.collapse.navbar-collapse{
 
 .carousel-inner >.item >img {
   margin: 0 auto;
-  height: 200px;
+  height: 340px;
 }
 
 #message{
@@ -209,6 +211,8 @@ input{
   font-size: 20px;
   // padding: 20px 100px 40px 20px;
 }
+
+
 
 // #uber{
 //   background-image: url('/img/UBER_API_Button_2x_Grey_hard edge.png');

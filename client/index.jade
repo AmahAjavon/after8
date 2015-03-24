@@ -20,14 +20,11 @@ html(lang='en', ng-app='after8')
       script.
         document.createElement('video');
   body
-    include ./views/nav/nav
-
-    .container-fluid
-      .row
-        .col-xs-12
-          div(ui-view)
+    div(ui-view)
 
     script(src='/vendor/jquery/dist/jquery.js')
+    //- script(src='angular-file-upload-shim.min.js')
+    //- script(src='angular-file-upload.min.js')
     script(src='/vendor/angular/angular.js')
     script(src='/vendor/angular-messages/angular-messages.js')
     script(src='/vendor/angular-ui-router/release/angular-ui-router.js')

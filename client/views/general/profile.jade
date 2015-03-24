@@ -1,80 +1,99 @@
-.container
+nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#navbar")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(ui-sref='home') AFTER8
+    #navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li: a(ui-sref='faq'): i.fa.fa-info &nbsp; Faq
+        li: a(ui-sref='contact'): i.fa.fa-at &nbsp; Contact
+        li: a(ui-sref='home'): i.fa.fa-sign-out &nbsp; Sign-out
+.container-fluid
   .row
-    .col-lg-5.col-md-4.col-xs-3
-    .col-lg-2.col-md-4.col-xs-6
-      p.profileName Welcome home 
-        b {{username}} !!
-      br
-      img.img-circle.img-responsive.img-center(src='http://singersroom.com/upload/2013/04/Beyonce-Goodwill-Partnership.jpg', alt='reponsive-image')
-    .col-lg-5.col-md-4.col-xs-3
-  .row
-    br
-    a.btn.btn-danger(href='#/feed') Party Animalz Feed
-    br
-    h3.promo1 So... What's popping?
-  .row
-    br
-    h3 Shows, Performances, Events in your area 
-    br
-    #carousel-events.carousel(style='margin-left: 20px;')
-      label.labelTag list of Events
-      br
-      .carousel-inner
-        .item(ng-class='{active:!$index}', ng-repeat='show in shows')
-          img.img-responsive.img-center(src='{{show.image[3]["#text"]}}')
-          .carousel-caption.col-md-6.pull-left
-            h3 {{show.title}}
-            h4 {{show.artists.artist}}
-            p {{show.startDate}}
-          .col-md-6.pull-right
-            h5 {{show.name}}
-            h5 {{show.venue.location.city}}
-            h5 {{show.venue.location.street}}
-            h5 {{show.venue.location.postalcode}}
-          a.btn.btn-success#uber(href='{{uber}}') Get a ride
-      
-          a.btn.btn-info(href='{{show.url}}') Get Tickets 
-      span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
-          span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-          span.sr-only Previous
-      span.right.carousel-control(href='#carousel-events', role='button', data-slide='next')
-          span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-          span.sr-only Next
+    .col-xs-12        
+      .row
+        .col-lg-5.col-md-4.col-xs-3
+        .col-lg-2.col-md-4.col-xs-6
+          p.profileName Welcome home 
+            b {{username}} !!
+          br
+          img.img-circle.img-responsive.img-center(src='{{user.image}}', alt='reponsive-image')
+        .col-lg-5.col-md-4.col-xs-3
+      .row
+        br
+        a.btn.btn-danger(href='#/feed') Party Animalz Feed
+        br
+        h3.promo1 So... What's popping?
+      .row
+        br
+        h3 Shows, Performances, Events in your area 
+        br
+        #carousel-events.carousel(style='margin-left: 30px;')
+          label.labelTag list of Events
+          br
+          .carousel-inner
+            .item(ng-class='{active:!$index}', ng-repeat='show in shows')
+              .col-lg-4.col-md-4.col-sm-6.col-xs-6
+                img.img-responsive.img-center(src='{{show.image[3]["#text"]}}')
+              .col-md-8.col-md-8.col-sm-6.col-xs-6
+                .row
+                  h3 {{show.title}}
+                  h4 {{show.artists.artist}}
+                  p {{show.startDate}}
+                .row
+                  h5 {{show.name}}
+                  h5 {{show.venue.location.city}}
+                  h5 {{show.venue.location.street}}
+                  h5 {{show.venue.location.postalcode}}
+                .row  
+                  a.btn.btn-success#uber(href='{{uber}}') Get a ride
+                  a.btn.btn-info(href='{{show.url}}') Get Tickets 
+          span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+              span.sr-only Previous
+          span.right.carousel-control(href='#carousel-events', role='button', data-slide='next')
+              span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+              span.sr-only Next
 
-  .row
-    br
-    h3 Hit the Bars, Nightclubs in town tonight 
-    br
-    #carousel-clubs.carousel(style='margin-left: 20px;')
-      label.labelTag list of Clubs
-      br
-      .carousel-inner
-        .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
-          img.img-responsive.img-center(src='')
-          .carousel-caption.col-md-6.pull-left
-            h3 {{venue.name}}
-            h4 {{venue.location.city}}
-          .col-md-6.pull-right
-            h5 {{venue.categories[0].shortName}}
-            h5 Address: {{venue.location.formattedAddress}}
-            h5 Foursquare Users checked-in: {{venue.stats.checkinsCount}}
-            h5 Foursquare Users count: {{venue.stats.usersCount}}
+      .row
+        br
+        h3 Hit the Bars, Nightclubs in town tonight 
+        br
+        #carousel-clubs.carousel(style='margin: 0px;')
+          label.labelTag list of Clubs
+          br
+          .carousel-inner
+            .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
+              .col-lg-4.col-md-4.col-sm-6.col-xs-6
+                img.img-responsive.img-center(src='')
+              .col-md-8.col-md-8.col-sm-6.col-xs-6
+                .row
+                  h3 {{venue.name}}
+                  h4 {{venue.location.city}}
+                .row
+                  h5 {{venue.categories[0].shortName}}
+                  h5 Address: {{venue.location.formattedAddress}}
+                  h5 Foursquare Users checked-in: {{venue.stats.checkinsCount}}
+                  h5 Foursquare Users count: {{venue.stats.usersCount}}
 
-          a.btn.btn-success#uber(href='{{uber}}') Get a ride
+              a.btn.btn-success#uber(href='{{uber}}') Get a ride                
+              a.btn.btn-info(href='{{venue.url}}') More infos 
+          span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
+              span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+              span.sr-only Previous
+          span.right.carousel-control(href='#carousel-clubs', role='button', data-slide='next')
+              span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+              span.sr-only Next
+      .row
+        a.btn.btn-warning(ng-click='lastFM()') lastFM
+        a.btn.btn-danger(ng-click='foursquare()') foursquare
+        a.btn.btn-info(ng-click='google()') google 
+                
             
-          a.btn.btn-info(href='{{venue.url}}') More infos 
-      span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
-          span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-          span.sr-only Previous
-      span.right.carousel-control(href='#carousel-clubs', role='button', data-slide='next')
-          span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-          span.sr-only Next
-  .row
-    a.btn.btn-warning(ng-click='lastFM()') lastFM
-    a.btn.btn-danger(ng-click='foursquare()') foursquare
-    a.btn.btn-info(ng-click='google()') google 
-            
-          
 
 
       

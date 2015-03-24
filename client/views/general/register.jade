@@ -14,7 +14,10 @@
             p.help-block(ng-show='regForm.password.$error.minlength') Min password length is 8 characters.
             p(style='color:red;', ng-show='regError') {{regErrorMessage}}
           button.btn.btn-success(type='button', ng-click='signUp()', ng-disabled='!user.email || !user.password') Register
-
+          .form-group
+            label Back to login
+            a(href='#/home')  Sign In
+            br 
     .col-lg-5.col-md-4.col-xs-3 
   
   
