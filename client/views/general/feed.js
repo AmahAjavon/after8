@@ -14,7 +14,7 @@ function($scope, $firebaseArray) {
   $scope.addMessage = function(e) {
 
     // if (e.keyCode === 13 && $scope.msg)
-     $scope.addMessage = function() {
+    $scope.addMessage = function() {
 
       var name = $scope.name || "anonymous";
 
@@ -28,6 +28,11 @@ function($scope, $firebaseArray) {
   }
 }
 ]);
+
+
+
+
+
 
 // angular.module('after8', ['angularFileUpload']);
 //
@@ -50,18 +55,18 @@ function($scope, $firebaseArray) {
 //   };
 // }];
 
-function readURL(input) {
-    if (input.files && input.files[0]) {
-        var reader = new FileReader();
-
-        reader.onload = function (e) {
-            $('#picture').attr('src', e.target.result);
-        }
-
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
-$("#imgInp").change(function(){
-    readURL(this);
-});
+// function readURL(input) {
+//     if (input.files && input.files[0]) {
+//         var reader = new FileReader();
+//
+//         reader.onload = function (e) {
+//             $('#picture').attr('src', e.target.result);
+//         }
+//
+//         reader.readAsDataURL(input.files[0]);
+//     }
+// }
+//
+// $("#imgInp").change(function(){
+//     readURL(this);
+// });

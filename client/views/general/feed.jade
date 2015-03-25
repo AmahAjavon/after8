@@ -12,45 +12,37 @@ nav.navbar.navbar-inverse
         li: a(ui-sref='faq'): i.fa.fa-info &nbsp; Faq
         li: a(ui-sref='contact'): i.fa.fa-at &nbsp; Contact
         li: a(ui-sref='home'): i.fa.fa-sign-out &nbsp; Sign-out
-.container-fluid
+.container-fluid       
   .row
-    .col-xs-12        
-      .row
+    br
+    a.btn.btn-danger(href='#/profile') Profile Page
+    br
+    .col-lg-6.col-md-6.col-xs-6.chat-input
+      h3 Make party buddies.. chat!
+      .form-group.chat-toolbar
+        label(for='nameInput')
+        input#nameInput(ng-model='name', type='text', placeholder='enter a username...')
+      .form-group
+        input#messageInput(ng-model='msg', type='text', placeholder='Type a message...')
         br
-        a.btn.btn-danger(href='#/profile') Profile Page
+      .form-group
+        a.btn.btn-info(ng-click='addMessage()') Add it
         br
-      .row
-        h3 So... What's popping?
-        .col-lg-3.col-md-2.col-xs-1
-        .col-lg-6.col-md-8.col-xs-10.chat-input
-          form
-            .form-group.chat-toolbar
-              label(for='nameInput')
-              input#nameInput(ng-model='name', type='text', placeholder='enter a username...')
-            .form-group
-              input#messageInput(ng-model='msg', type='text', placeholder='Type a message...')
-              br
-            .form-group
-              #spin
-                h1 Add a picture
-                input#file-upload.hidden(type='file', accept='image/*', capture='camera')
-                br
-                img#pano.pano 
-            .form-group
-              a.btn.btn-info(ng-click='addMessage()') Add it
-              br        
-        .col-lg-3.col-md-2.col-xs-1      
+      .form-group      
+        ul#messages.chat-messages
+          li#message(ng-repeat='msg in messages')
+            strong.chat-username {{ msg.from }}
+            |           says: {{ msg.body }}
+    br
+    .col-lg-6.col-md-6.col-xs-6.photo-input
+      h3 Pictures Feed              
+      .form-group
+        #spin
+        h4 Add image
+        input#file-upload.hidden(type='file', accept='image/*', capture='camera')
+        br
+        img#pano.pano                      
 
-      .row
-        .col-lg-3.col-md-2.col-xs-1
-        .col-lg-6.col-md-8.col-xs-10.chat-container
-          .form-group      
-            ul#messages.chat-messages
-              li#message(ng-repeat='msg in messages')
-                strong.chat-username {{ msg.from }}
-                |           says: {{ msg.body }}
-
-        .col-lg-3.col-md-2.col-xs-1
 
 
 

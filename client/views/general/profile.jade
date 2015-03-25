@@ -39,71 +39,76 @@ nav.navbar.navbar-inverse
               | Only PNG,GIF,JPG,JEPG files allowed.
         .col-lg-5.col-md-5.col-sm-5.col-xs-5
       .row
-        br
         a.btn.btn-danger(href='#/feed') Party Animalz Feed
         br
         h3.promo1 So... What's popping?
       .row
-        br
-        h3 Shows, Performances, Events in your area 
-        br
-        #carousel-events.carousel(style='margin-left: 30px;')
-          label.labelTag list of Events
+        .col-lg-6.col-md-6.col-xs-6
           br
-          .carousel-inner
-            .item(ng-class='{active:!$index}', ng-repeat='show in shows')
-              .col-lg-4.col-md-4.col-sm-6.col-xs-6
-                img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='300', height='300')
-              .col-md-8.col-md-8.col-sm-6.col-xs-6
-                .row
-                  h3 {{show.title}}
-                  h4 {{(show.artists.artist).join()}}
-                  p {{show.startDate}}
-                .row
-                  h5 {{show.name}}
-                  h5 {{show.venue.location.city}}
-                  h5 {{show.venue.location.street}}
-                  h5 {{show.venue.location.postalcode}}
-                .row  
-                  a.btn.btn-success#uber(href='{{uber}}') Get a ride
-                  a.btn.btn-info(href='{{show.url}}') Get Tickets 
-          span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
-              span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-              span.sr-only Previous
-          span.right.carousel-control(href='#carousel-events', role='button', data-slide='next')
-              span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-              span.sr-only Next
+          h3 Shows, Performances, Events in your area 
+          br
+          #carousel-events.carousel(style='margin: 30px 30px 30px 30px;')
+            label.labelTag list of Events
+            br
+            .carousel-inner
+              .item(ng-class='{active:!$index}', ng-repeat='show in shows')
+                .col-md-6.col-md-6.col-sm-6.col-xs-6
+                  img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='400', height='400')
+                .col-md-6.col-md-6.col-sm-6.col-xs-6
+                  .row
+                    h3 {{show.title}}
+                    h4 {{(show.artists.artist).join(', ')}}
+                    p {{show.startDate}}
+                  .row
+                    h5 {{show.name}}
+                    h5 {{show.venue.location.city}}
+                    h5 {{show.venue.location.street}}
+                    h5 {{show.venue.location.postalcode}}
+                    h4 {{show.venue.location['geo:point']['geo:lat']}}
+                  .row  
+                    a(href='#')
+                      .button
+                        p#time
+                    br        
+                    a.btn.btn-info(href='{{show.url}}') Get Tickets 
+            span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
+                span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+                span.sr-only Previous
+            span.right.carousel-control(href='#carousel-events', role='button', data-slide='next')
+                span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+                span.sr-only Next
 
+        .col-lg-6.col-md-6.col-xs-6
+          br
+          h3 Hit the Bars, Nightclubs in town tonight 
+          br
+          #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px;')
+            label.labelTag list of Clubs
+            br
+            .carousel-inner
+              .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
+                  .row
+                    h3 {{venue.name}}
+                    h4 {{venue.location.city}}
+                  .row
+                    h5 {{venue.categories[0].shortName}}
+                    h5 Address: {{(venue.location.formattedAddress).join(', ')}}
+                    h5 Foursquare Users checked-in: {{venue.stats.checkinsCount}}
+                    h5 Foursquare Users count: {{venue.stats.usersCount}}
+                  .row
+                    a(href='#', ng-click='uber()')
+                      .button
+                        p#time
+                    br                 
+                    a.btn.btn-info(href='{{venue.url}}') More infos 
+            span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
+                span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
+                span.sr-only Previous
+            span.right.carousel-control(href='#carousel-clubs', role='button', data-slide='next')
+                span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
+                span.sr-only Next
       .row
         br
-        h3 Hit the Bars, Nightclubs in town tonight 
-        br
-        #carousel-clubs.carousel(style='margin: 0px;')
-          label.labelTag list of Clubs
-          br
-          .carousel-inner
-            .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
-              .col-lg-4.col-md-4.col-sm-6.col-xs-6
-                img.img-responsive.img-center(src='', width='300', height='300')
-              .col-md-8.col-md-8.col-sm-6.col-xs-6
-                .row
-                  h3 {{venue.name}}
-                  h4 {{venue.location.city}}
-                .row
-                  h5 {{venue.categories[0].shortName}}
-                  h5 Address: {{(venue.location.formattedAddress).join()}}
-                  h5 Foursquare Users checked-in: {{venue.stats.checkinsCount}}
-                  h5 Foursquare Users count: {{venue.stats.usersCount}}
-
-              a.btn.btn-success#uber(href='{{uber}}') Get a ride                
-              a.btn.btn-info(href='{{venue.url}}') More infos 
-          span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
-              span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
-              span.sr-only Previous
-          span.right.carousel-control(href='#carousel-clubs', role='button', data-slide='next')
-              span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
-              span.sr-only Next
-      .row
         a.btn.btn-warning(ng-click='lastFM()') lastFM
         a.btn.btn-danger(ng-click='foursquare()') foursquare
         a.btn.btn-info(ng-click='google()') google 
