@@ -26,8 +26,21 @@ function($scope, $firebaseArray) {
       $scope.msg = "";
     }
   }
+
+//   $scope.posts = [];
+//   $scope.photo = {img: 'http://', title: ''};
+//
+//   $scope.submitPhoto = function () {
+//   $scope.photos.push($scope.post);
+//   $scope.photo = {img: 'http://', title: ''};
+// };
+//
+//   $scope.deletePhoto = function (index) {
+//   $scope.photos.splice(index, 1);
+// };
+//
 }
-]);
+])
 
 
 

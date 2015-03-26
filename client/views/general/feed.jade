@@ -39,10 +39,21 @@ nav.navbar.navbar-inverse
       .form-group
         #spin
         h4 Add image
-        input#file-upload.hidden(type='file', accept='image/*', capture='camera')
+        input#file-upload(type='file', accept='image/*', capture='camera')
         br
         img#pano.pano                      
-
+        //- div(ng-repeat='photo in photos')
+        //-   a(ng-href='{{ photo.img }}') {{ photo.title }}
+        //- form(ng-submit='submitPhoto()')
+        //-   input(type='text', ng-model='photo.title')
+        //-   img(ng-src='{{ photo.url }}', ng-model='photo.img', accept='image/*', capture='camera')
+        //-   input(type='submit', value='Add Photo')
+        //- | Photos: {{ photos }}
+        //- br
+        //- | Photo: {{ photo }}
+        //- div(ng-repeat='photo in photos')
+        //-   a(ng-src='{{ photo.url }}') {{ photo.title }}
+        //-   a(ng-click='deletePhoto($index)') delete
 
 
 
