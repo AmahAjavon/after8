@@ -16,11 +16,10 @@ nav.navbar.navbar-inverse
   .row
     .col-xs-12        
       .row
-        .col-lg-5.col-md-5.col-sm-5.col-xs-5
-        .col-lg-2.col-md-2.col-sm-2.col-xs-2
+        .col-lg-5.col-md-5.col-sm-4
+        .col-lg-2.col-md-2.col-sm-4.col-xs-12
           p.profileName Welcome home 
             b {{username}} !!
-          br
           div(flow-init='{singleFile:true}', flow-file-added='!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]')
             h3
               a.anchor(name='image-example', href='#image-example')
@@ -31,39 +30,36 @@ nav.navbar.navbar-inverse
             .thumbnail(ng-show='$flow.files.length')
               img(flow-img='$flow.files[0]')
             div
-              span.btn.btn-primary(ng-show='!$flow.files.length', flow-btn='') Select image
+              span.btn.btn-default(ng-show='!$flow.files.length', flow-btn='') Select image
               span.btn.btn-info(ng-show='$flow.files.length', flow-btn='') Change
-              span.btn.btn-danger(ng-show='$flow.files.length', ng-click='$flow.cancel()')
+              span.btn.btn-info(ng-show='$flow.files.length', ng-click='$flow.cancel()')
                 | Remove
-            p
-              | Only PNG,GIF,JPG,JEPG files allowed.
-        .col-lg-5.col-md-5.col-sm-5.col-xs-5
+        .col-lg-5.col-md-5.col-sm-4
       .row
-        a.btn.btn-danger(href='#/feed') Party Animalz Feed
+        br
+        a.btn.btn-success(href='#/feed') Chat room
         br
         h3.promo1 So... What's popping?
       .row
-        .col-lg-6.col-md-6.col-xs-6
+        .col-lg-6.col-md-6.col-xs-12
           h3 Shows, Performances, Events in your area 
-          #carousel-events.carousel(style='margin: 30px 30px 30px 30px;')
+          #carousel-events.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid black;')
             label.labelTag list of Events
             br
             .carousel-inner
               .item(ng-class='{active:!$index}', ng-repeat='(index, show) in shows')
-                .col-md-6.col-md-6.col-sm-6.col-xs-6
-                  img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='400', height='400')
-                .col-md-6.col-md-6.col-sm-6.col-xs-6
+                .col-md-6.col-md-6
+                  img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='400', height='400', style='border: 1px solid black;')
+                .col-md-6.col-md-6
                   .row
                     h3 {{ show.title }}
                     h4 {{ (show.artists.artist).join(', ') }}
                     p {{ show.startDate }}
                   .row
                     h5 {{ show.name }}
-                    h5 index: {{ index }}
                     h5 {{ show.venue.location.city }}
                     h5 {{ show.venue.location.street }}
                     h5 {{ show.venue.location.postalcode }}
-                    h4 {{ show.venue.location['geo:point']['geo:lat'] }} and {{ show.venue.location['geo:point']['geo:long'] }}
                   .row  
                     a.btn.btn-info(href='{{show.url}}') Get Tickets
                     br 
@@ -85,9 +81,9 @@ nav.navbar.navbar-inverse
             li
             li 
             
-        .col-lg-6.col-md-6.col-xs-6
+        .col-lg-6.col-md-6.col-xs-12
           h3 Hit the Bars, Nightclubs in town tonight 
-          #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px;')
+          #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid black;')
             label.labelTag list of Clubs
             br
             .carousel-inner
@@ -96,12 +92,10 @@ nav.navbar.navbar-inverse
                     h3 {{ venue.name }}
                     h4 {{ venue.location.city }}
                   .row
-                    h5 {{ venue.categories[0].shortName }}
-                    h5 Address: {{ (venue.location.formattedAddress).join(', ') }}
+                    p {{ venue.categories[0].shortName }}
+                    h5 {{ (venue.location.formattedAddress).join(', ') }}
                     h5 Foursquare Users checked-in: {{ venue.stats.checkinsCount }}
                     h5 Foursquare Users count: {{ venue.stats.usersCount }}
-                    h4 {{ venue.location.lat }} and {{ venue.location.lng }}
-                    h5 index: {{ index }}
                   .row
                     a.btn.btn-info(href='{{venue.url}}') More infos
                     br
@@ -123,9 +117,9 @@ nav.navbar.navbar-inverse
             li
             li
       .row
-        br
-        a.btn.btn-warning(ng-click='lastFM()') lastFM
-        a.btn.btn-danger(ng-click='foursquare()') foursquare
+        //- br
+        //- a.btn.btn-warning(ng-click='lastFM()') lastFM
+        //- a.btn.btn-danger(ng-click='foursquare()') foursquare
 
                 
             

@@ -12,18 +12,20 @@ nav.navbar.navbar-inverse
         li: a(ui-sref='faq'): i.fa.fa-info &nbsp; Faq
         li: a(ui-sref='contact'): i.fa.fa-at &nbsp; Contact
         li: a(ui-sref='home'): i.fa.fa-sign-out &nbsp; Sign-out
-.container-fluid       
+.container-fluid#feed       
   .row
     br
-    a.btn.btn-danger(href='#/profile') Profile Page
+    a.btn.btn-success(href='#/profile') Profile Page
     br
-    .col-lg-6.col-md-6.col-xs-6.chat-input
-      h3 Make party buddies.. chat!
+  .row#firechat-wrapper
+    .col-lg-2.col-md-1.col-xs-1
+    .col-lg-8.col-md-10.col-xs-10
+      h3 Make party buddies... chat!
       .form-group.chat-toolbar
         label(for='nameInput')
-        input#nameInput(ng-model='name', type='text', placeholder='enter a username...')
+        input.input-sm#nameInput(ng-model='name', type='text', placeholder='enter a username...')
       .form-group
-        input#messageInput(ng-model='msg', type='text', placeholder='Type a message...')
+        input.input-sm#messageInput(ng-model='msg', type='text', placeholder='Type a message...')
         br
       .form-group
         a.btn.btn-info(ng-click='addMessage()') Add it
@@ -33,28 +35,24 @@ nav.navbar.navbar-inverse
           li#message(ng-repeat='msg in messages')
             strong.chat-username {{ msg.from }}
             |           says: {{ msg.body }}
-    br
-    .col-lg-6.col-md-6.col-xs-6.photo-input
-      h3 Pictures Feed              
-      .form-group
-        .fb-image-upload(ng-controller='ImageUpload')
-          form(ng-submit='upload_image(image)')
-            .fb-error(ng-show='error') {{error}}
-            .fb-inputs(ng-hide='image.isUploading')
-              input.fb-image-upload(fb-image-upload='', type='file', name='image')
-              input.fb-submit(type='submit', value='Upload Image', ng-show='image.valid')
-            .fb-uploading(ng-show='image.isUploading')
-              | Uploading...    
-        
-        
-        
-        
-        //- #spin
-        //- h4 Add image
-        //- input#file-upload.hidden(type='file', accept='image/*', capture='camera')
-        //- br
-        //- img#pano.pano                      
+    .col-lg-2.col-md-1.col-xs-1  
 
+
+
+
+      
+    //- .col-lg-6.col-md-6.col-xs-6.photo-input
+    //-   h3 Pictures Feed              
+    //-   .form-group
+    //-     .fb-image-upload(ng-controller='ImageUpload')
+    //-       form(ng-submit='upload_image(image)')
+    //-         .fb-error(ng-show='error') {{error}}
+    //-         .fb-inputs(ng-hide='image.isUploading')
+    //-           input.fb-image-upload(fb-image-upload='', type='file', name='image')
+    //-           input.fb-submit(type='submit', value='Upload Image', ng-show='image.valid')
+    //-         .fb-uploading(ng-show='image.isUploading')
+    //-           | Uploading...    
+    //-   .form-group
 
 
 

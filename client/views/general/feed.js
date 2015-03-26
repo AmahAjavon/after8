@@ -153,3 +153,42 @@ debugger;
 		restrict: 'A'
 	};
 }]);
+
+
+// var chatRef = new Firebase('https://after8.firebaseio.com/chat');
+//
+// $scope.fblogin = function () {
+//   chatRef.authWithOAuthPopup('facebook', function(error, authData) {
+//     if (error) {
+//       console.log(error);
+//     }
+//   });
+// }
+//
+// $scope.twilogin = function () {
+//   chatRef.authWithOAuthPopup('twitter', function(error, authData) {
+//     if (error) {
+//       console.log(error);
+//     }
+//   });
+// }
+//
+// $scope.twilogin = function () {
+//   chatRef.authWithOAuthPopup('google', function(error, authData) {
+//     if (error) {
+//       console.log(error);
+//     }
+//   });
+// }
+//
+// chatRef.onAuth(function(authData) {
+//   // Once authenticated, instantiate Firechat with our user id and user name
+//   if (authData) {
+//     initChat(authData);
+//   }
+// });
+//
+// function initChat(authData) {
+//   var chat = new FirechatUI(chatRef, document.getElementById('firechat-wrapper'));
+//   chat.setUser(authData.uid, authData[authData.provider].displayName);
+// }

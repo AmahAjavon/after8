@@ -12,7 +12,7 @@ angular.module('after8')
     var uberClientId = 'IuEmQipRiQGncyZ4ySFYz1uKdD-uHLZW';
     var uberServerToken = 'm6y2-yeBTpRFxFnCITJN1h5xCCnlVSztRtaLcLsn';
 
-    $http.get('http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=150&limit=50&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json')
+    $http.get('http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=50&limit=50&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json')
     .success(function(data, status, headers, config) {
       console.log(data);
       $scope.shows = data.events.event;
