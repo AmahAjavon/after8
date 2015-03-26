@@ -11,4 +11,5 @@ angular.module('after8', ['ui.router', 'ngMessages', 'geolocation', 'firebase', 
       .state('register', {url:'/register', templateUrl:'/views/general/register.html', controller: 'RegisterCtrl'})
       .state('profile', {url:'/profile', templateUrl:'/views/general/profile.html', controller: 'ProfileCtrl'})
       .state('feed', {url:'/feed', templateUrl:'/views/general/feed.html', controller:'ChatCtrl'})
+      .state('images', {url:'/images', templateUrl:'/views/general/feed.html', controller:'ImageUpload'})
   }]);

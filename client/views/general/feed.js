@@ -11,75 +11,145 @@ function($scope, $firebaseArray) {
 
   $scope.messages = $firebaseArray(ref);
 
-  $scope.addMessage = function(e) {
+  $scope.addMessage = function() {
 
     // if (e.keyCode === 13 && $scope.msg)
     $scope.addMessage = function() {
 
-      var name = $scope.name || "anonymous";
+      var name = $scope.name || 'anonymous';
 
       $scope.messages.$add({
         from: name,
         body: $scope.msg
       });
 
-      $scope.msg = "";
-    }
-  }
+      $scope.msg = '';
+    };
+  };
 
-//   $scope.posts = [];
-//   $scope.photo = {img: 'http://', title: ''};
-//
-//   $scope.submitPhoto = function () {
-//   $scope.photos.push($scope.post);
-//   $scope.photo = {img: 'http://', title: ''};
-// };
-//
-//   $scope.deletePhoto = function (index) {
-//   $scope.photos.splice(index, 1);
-// };
-//
-}
+ }
 ])
 
+.controller('ImageUpload', ['$scope', '$log',
+	function ImageUpload($scope, $log) {
+		$scope.upload_image = function (image) {
+			if (!image.valid) return;
 
+			var imagesRef, safename, imageUpload;
+debugger;
+			image.isUploading = true;
+			imageUpload = {
+				isUploading: true,
+				data: image.data,
+				thumbnail: image.thumbnail,
+				name: image.filename,
+				author: {
+					provider: $scope.auth.user.provider,
+					id: $scope.auth.user.id
+				}
+			};
 
+			safename = imageUpload.name.replace(/\.|\#|\$|\[|\]|-|\//g, '');
+			imagesRef = new Firebase($scope.firebaseUrl + '/images');
 
+			imagesRef.child(safename).set(imageUpload, function (err) {
+				if (!err) {
+					imagesRef.child(safename).child('isUploading').remove();
+					$scope.$apply(function () {
+						$scope.status = 'Your image "' + image.filename + '" has been successfully uploaded!';
+						if ($scope.uploaded_callback !== undefined) {
+							$scope.uploaded_callback(angular.copy(imageUpload));
+						}
+						image.isUploading = false;
+						image.data = undefined;
+						image.filename = undefined;
+					});
+				}else{
+					$scope.error = 'There was an error while uploading your image: ' + err;
+				}
+			});
+		};
+	}
+])
 
+.directive('fbImageUpload', [function() {
+	return {
+		link: function(scope, element, attrs) {
+			// Modified from https://developer.mozilla.org/en-US/docs/Web/API/FileReader
+			var fileReader = new FileReader();
+			var fileFilter = /^(?:image\/bmp|image\/cis\-cod|image\/gif|image\/ief|image\/jpeg|image\/jpeg|image\/jpeg|image\/pipeg|image\/png|image\/svg\+xml|image\/tiff|image\/x\-cmu\-raster|image\/x\-cmx|image\/x\-icon|image\/x\-portable\-anymap|image\/x\-portable\-bitmap|image\/x\-portable\-graymap|image\/x\-portable\-pixmap|image\/x\-rgb|image\/x\-xbitmap|image\/x\-xpixmap|image\/x\-xwindowdump)$/i;
+			var wasUploading = false;
 
-// angular.module('after8', ['angularFileUpload']);
-//
-// var UploadCtrl = [ '$scope', '$upload', function($scope, $upload) {
-//   $scope.onFileSelect = function($files) {
-//     //$files: an array of files selected, each file has name, size, and type.
-//     for (var i = 0; i < $files.length; i++) {
-//       var file = $files[i];
-//       $scope.upload = $upload.upload({
-//         url: 'server/upload/url', //upload.php script, node.js route, or servlet url
-//         data: {myObj: $scope.myModelObj},
-//         file: file,
-//       }).progress(function(evt) {
-//         console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
-//       }).success(function(data, status, headers, config) {
-//         // file is uploaded successfully
-//         console.log(data);
-//       });
-//     }
-//   };
-// }];
+			scope.image = {valid: false};
 
-// function readURL(input) {
-//     if (input.files && input.files[0]) {
-//         var reader = new FileReader();
-//
-//         reader.onload = function (e) {
-//             $('#picture').attr('src', e.target.result);
-//         }
-//
-//         reader.readAsDataURL(input.files[0]);
-//     }
-// }
-//
-// $("#imgInp").change(function(){
-//     readURL(this);
-// });
+			scope.$watch('image.isUploading', function () {
+				var isUploading = scope.image.isUploading;
+				if (isUploading && !wasUploading) {
+					wasUploading = true;
+				}else if (!isUploading && wasUploading) {
+					wasUploading = false;
+					element.parent().parent()[0].reset();
+				}
+			});
+
+			fileReader.onload = function (fileReaderEvent) {
+				scope.$apply(function () {
+					scope.image.data = fileReaderEvent.target.result;
+				});
+			};
+
+			var load_image = function(imageInput) {
+				if (imageInput.files.length === 0) {
+					return;
+				}
+
+				var file = imageInput.files[0];
+
+				scope.image.filename = file.name;
+
+				if (!fileFilter.test(file.type)) {
+					scope.error = 'You must select a valid image!';
+					scope.image.valid = false;
+					scope.$apply();
+					return;
+				}else{
+					scope.error = '';
+					scope.image.valid = true;
+				}
+
+				fileReader.readAsDataURL(file);
+				scope.$apply();
+			};
+
+			element[0].onchange = function() {
+				load_image(element[0]);
+			};
+		},
+		restrict: 'A'
+	};
+}])
+
+.directive('fbSrc', ['$log', function ($log) {
+	// Used to embed images stored in Firebase
+
+	/*
+	Required attributes:
+		fp-src (The name of an image stored in Firebase)
+	*/
+	return {
+		link: function (scope, elem, attrs) {
+			var safename = attrs.fpSrc.replace(/\.|\#|\$|\[|\]|-|\//g, '');
+			var dataRef = new Firebase( [scope.firebaseUrl, 'images', safename].join('/') );
+			elem.attr('alt', attrs.fpSrc);
+			dataRef.once('value', function (snapshot) {
+				var image = snapshot.val();
+				if (!image) {
+					$log.log('It appears the image ' + attrs.fpSrc + ' does not exist.');
+				}else{
+					elem.attr('src', image.data);
+				}
+			});
+		},
+		restrict: 'A'
+	};
+}]);

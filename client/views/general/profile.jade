@@ -44,9 +44,7 @@ nav.navbar.navbar-inverse
         h3.promo1 So... What's popping?
       .row
         .col-lg-6.col-md-6.col-xs-6
-          br
           h3 Shows, Performances, Events in your area 
-          br
           #carousel-events.carousel(style='margin: 30px 30px 30px 30px;')
             label.labelTag list of Events
             br
@@ -67,11 +65,14 @@ nav.navbar.navbar-inverse
                     h5 {{ show.venue.location.postalcode }}
                     h4 {{ show.venue.location['geo:point']['geo:lat'] }} and {{ show.venue.location['geo:point']['geo:long'] }}
                   .row  
-                    a(ng-click='uber(index)')
-                      .button
-                        p#time
-                    br        
-                    a.btn.btn-info(href='{{show.url}}') Get Tickets 
+                    a.btn.btn-info(href='{{show.url}}') Get Tickets
+                    br 
+            .row                
+              a(ng-click='uber(index)')
+                .button
+                  p#time Get a ride
+                  br        
+ 
             span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
                 span.sr-only Previous
@@ -85,14 +86,12 @@ nav.navbar.navbar-inverse
             li 
             
         .col-lg-6.col-md-6.col-xs-6
-          br
           h3 Hit the Bars, Nightclubs in town tonight 
-          br
           #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px;')
             label.labelTag list of Clubs
             br
             .carousel-inner
-              .item(ng-class='{active:!$index}', ng-repeat='venue in venues')
+              .item(ng-class='{active:!$index}', ng-repeat='(index, venue) in venues')
                   .row
                     h3 {{ venue.name }}
                     h4 {{ venue.location.city }}
@@ -102,12 +101,16 @@ nav.navbar.navbar-inverse
                     h5 Foursquare Users checked-in: {{ venue.stats.checkinsCount }}
                     h5 Foursquare Users count: {{ venue.stats.usersCount }}
                     h4 {{ venue.location.lat }} and {{ venue.location.lng }}
+                    h5 index: {{ index }}
                   .row
-                    a(href='#', ng-click='uber()')
-                      .button
-                        p#time
-                    br                 
-                    a.btn.btn-info(href='{{venue.url}}') More infos 
+                    a.btn.btn-info(href='{{venue.url}}') More infos
+                    br
+            .row
+              a(href='#', ng-click='uber2(index)')
+                .button
+                  p#time Get a ride
+                  br                 
+
             span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
                 span.sr-only Previous
