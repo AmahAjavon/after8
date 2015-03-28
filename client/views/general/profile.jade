@@ -14,32 +14,22 @@ nav.navbar.navbar-inverse
         li: a(ui-sref='home'): i.fa.fa-sign-out &nbsp; Sign-out
 .container-fluid
   .row
-    .col-xs-12        
+    .col-xs-12
+      img.map(src='http://maps.googleapis.com/maps/api/staticmap?center={{coords.latitude}},{{coords.longitude}}&zoom=16&format=png&sensor=false&size=300x200&maptype=roadmap&style=element:geometry.fill|color:0xf4f4f4&markers=color:red|{{coords.latitude}},{{coords.longitude}}&scale=2', alt='')        
       .row
         .col-lg-5.col-md-5.col-sm-4
         .col-lg-2.col-md-2.col-sm-4.col-xs-12
-          p.profileName Welcome home 
-            b {{username}} !!
-          div(flow-init='{singleFile:true}', flow-file-added='!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]')
-            h3
-              a.anchor(name='image-example', href='#image-example')
-                span.octicon.octicon-link
-              | 
-            .thumbnail(ng-show='!$flow.files.length')
-              img(src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image')
-            .thumbnail(ng-show='$flow.files.length')
-              img(flow-img='$flow.files[0]')
-            div
-              span.btn.btn-default(ng-show='!$flow.files.length', flow-btn='') Select image
-              span.btn.btn-info(ng-show='$flow.files.length', flow-btn='') Change
-              span.btn.btn-info(ng-show='$flow.files.length', ng-click='$flow.cancel()')
-                | Remove
+          ul.profileName Welcome home {{username}} 
+            li {{username.cachedUserProfile.first_name}}
+            li {{username.username}} 
+            li {{username.cachedUserProfile.given_name}}     
+          img(ng-src='{{user.cachedUserProfile.userimage}}')
         .col-lg-5.col-md-5.col-sm-4
       .row
         br
         a.btn.btn-success(href='#/feed') Chat room
         br
-        h3.promo1 So... What's popping?
+        h2 So... What's popping?
       .row
         .col-lg-6.col-md-6.col-xs-12
           h3 Shows, Performances, Events in your area 
@@ -68,18 +58,12 @@ nav.navbar.navbar-inverse
                 .button
                   p#time Get a ride
                   br        
- 
-            span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
+             span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
                 span.sr-only Previous
             span.right.carousel-control(href='#carousel-events', role='button', data-slide='next')
                 span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
                 span.sr-only Next
-          ul#uberResults(ng-repeat='price in prices')
-            li  
-            li
-            li
-            li 
             
         .col-lg-6.col-md-6.col-xs-12
           h3 Hit the Bars, Nightclubs in town tonight 
@@ -104,28 +88,28 @@ nav.navbar.navbar-inverse
                 .button
                   p#time Get a ride
                   br                 
-
             span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
                 span.sr-only Previous
             span.right.carousel-control(href='#carousel-clubs', role='button', data-slide='next')
                 span.glyphicon.glyphicon-chevron-right(aria-hidden='true')
                 span.sr-only Next
-          ul#uberResults(ng-repeat='price in prices')
-            li  
-            li
-            li
-            li
-      .row
-        //- br
-        //- a.btn.btn-warning(ng-click='lastFM()') lastFM
-        //- a.btn.btn-danger(ng-click='foursquare()') foursquare
-
-                
-            
-
 
       
-
-
-  
+        //- 
+        //- div(flow-init='{singleFile:true}', flow-file-added='!!{png:1,gif:1,jpg:1,jpeg:1}[$file.getExtension()]')
+        //-   h3
+        //-     img(ng-src=='{{userimage}}')
+        //-     a.anchor(name='image-example', href='#image-example')
+        //-       span.octicon.octicon-link
+        //-     | 
+        //-   .thumbnail(ng-show='!$flow.files.length')
+        //-     img(src='http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image')
+        //-   .thumbnail(ng-show='$flow.files.length')
+        //-     img(flow-img='$flow.files[0]')
+        //-   div
+        //-     span.btn.btn-default(ng-show='!$flow.files.length', flow-btn='') Select image
+        //-     span.btn.btn-info(ng-show='$flow.files.length', flow-btn='') Change
+        //-     span.btn.btn-info(ng-show='$flow.files.length', ng-click='$flow.cancel()')
+        //-       | Remove
+        //- 

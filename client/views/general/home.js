@@ -15,8 +15,10 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-
         $location.path('/profile');
+        console.log('the data is: ', authData.facebook.cachedUserProfile.first_name);
+        $scope.username = authData.facebook.cachedUserProfile.first_name;
+        $scope.userimage = authData.facebook.cachedUserProfile.picture.data.url;
       }
     });
   };
@@ -27,8 +29,10 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-
         $location.path('/profile');
+        $scope.username = authData.twitter.username;
+        $scope.userimage = authData.twitter.cachedUserProfile.profile_image_url;
+
       }
     });
   };
@@ -39,12 +43,12 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-
         $location.path('/profile');
+        $scope.username = authData.google.cachedUserProfile.given_name;
+        $scope.userimage = authData.google.cachedUserProfile.picture;
       }
     });
   };
-
 
   $scope.user = {};
   $scope.signIn = function(e) {
@@ -65,7 +69,6 @@ angular.module('after8')
       console.log('Authentication failure');
     });
   };
-
 
 }])
 
