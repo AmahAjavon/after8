@@ -19,10 +19,7 @@ nav.navbar.navbar-inverse
       .row
         .col-lg-5.col-md-5.col-sm-4
         .col-lg-2.col-md-2.col-sm-4.col-xs-12
-          ul.profileName Welcome home {{username}} 
-            li {{username.cachedUserProfile.first_name}}
-            li {{username.username}} 
-            li {{username.cachedUserProfile.given_name}}     
+          ul.profileName Welcome home {{username}}     
           img(ng-src='{{user.cachedUserProfile.userimage}}')
         .col-lg-5.col-md-5.col-sm-4
       .row
@@ -86,7 +83,7 @@ nav.navbar.navbar-inverse
             .row
               a(href='#', ng-click='uber2(index)')
                 .button
-                  p#time Get a ride
+                  p#time2 Get a ride
                   br                 
             span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')

@@ -4,7 +4,9 @@ angular.module('after8')
 
 .controller('ProfileCtrl', ['$scope', 'geolocation', 'CommonProp', '$http', function($scope, geolocation, CommonProp, $http) {
   $scope.username = CommonProp.getUser();
-  $scope.username =
+  // $scope.username = CommonProp.facebook.cachedUserProfile.first_name;
+  // $scope.username = CommonProp.twitter.username;
+  // $scope.username = CommonProp.google.cachedUserProfile.given_name;
 
   geolocation.getLocation().then(function(data){
     $scope.coords = data.coords;
@@ -23,31 +25,29 @@ angular.module('after8')
         var eventLatitude = $scope.shows[index].venue.location['geo:point']['geo:lat'],
         eventLongitude = $scope.shows[index].venue.location['geo:point']['geo:long'];
 
-
-        $http.get('https://api.uber.com/v1/estimates/price?start_latitude=' + $scope.coords.latitude +'&start_longitude=' + $scope.coords.longitude + '&end_latitude=' + eventLatitude + '&end_longitude='+ eventLongitude + '&server_token=m6y2-yeBTpRFxFnCITJN1h5xCCnlVSztRtaLcLsn')
+        $http.get('/uber/prices?start_latitude=' + $scope.coords.latitude +'&start_longitude=' + $scope.coords.longitude + '&end_latitude=' + eventLatitude + '&end_longitude='+ eventLongitude)
         .success(function(result) {
-          var data = result.prices;
-          console.log('blah');
+          // console.log('result is', result["prices"]);
 
-          if (typeof data !== typeof undefined) {
-            // Sort Uber products by time to the user's location
-            data.sort(function(t0, t1) {
-              return t0.duration - t1.duration;
-            });
+          var data = result['prices'];
+            if (typeof data !== typeof undefined) {
+              // Sort Uber products by time to the user's location
+              data.sort(function(t0, t1) {
+                return t0.duration - t1.duration;
+              });
 
-            // Update the Uber button with the shortest time
-            var shortest = data[0];
-            if (typeof shortest !== typeof undefined) {
-              console.log('Updating time estimate...');
-              $('#time').html('in ' + Math.ceil(shortest.duration / 60.0) + ' min');
+              // Update the Uber button with the shortest time
+              var shortest = data[0];
+              if (typeof shortest !== typeof undefined) {
+                console.log('Updating time estimate...');
+                $('#time').html('in ' + Math.ceil(shortest.duration / 60.0) + ' min');
+              }
             }
-          }
+
         }).error(function(err) {
           console.log('could not load uber');
         });
-
-
-
+      }
         $scope.uber = function() {
           var uberURL = 'https://m.uber.com/sign-up?';
 
@@ -62,7 +62,7 @@ angular.module('after8')
           // Redirect to Uber
           window.location.href = uberURL;
         };
-      }
+
     }).error(function(data) {
       console.log('could not find this url');
     });
@@ -80,25 +80,24 @@ angular.module('after8')
         var clubLatitude = $scope.venues[index].location.lat,
         clubLongitude = $scope.venues[index].location.lng;
 
+        $http.get('/uber/prices?start_latitude=' + $scope.coords.latitude +'&start_longitude=' + $scope.coords.longitude + '&end_latitude=' + clubLatitude + '&end_longitude='+ clubLongitude)
+        .success(function(result) {
+          // console.log('result is', result["prices"]);
 
-        $http.get('https://api.uber.com/v1/estimates/price?start_latitude=' + $scope.coords.latitude +'&start_longitude=' + $scope.coords.longitude + '&end_latitude=' + clubLatitude + '&end_longitude='+ clubLongitude + '&server_token=m6y2-yeBTpRFxFnCITJN1h5xCCnlVSztRtaLcLsn')
-        .success(function(data, status, headers, config) {
-         var result = data.prices;
-          console.log(data.prices[1]);
+          var data = result['prices'];
+            if (typeof data !== typeof undefined) {
+              // Sort Uber products by time to the user's location
+              data.sort(function(t0, t1) {
+                return t0.duration - t1.duration;
+              });
 
-          if (typeof result !== typeof undefined) {
-            // Sort Uber products by time to the user's location
-            result.sort(function(t0, t1) {
-              return t0.duration - t1.duration;
-            });
-
-            // Update the Uber button with the shortest time
-            var shortest = result[0];
-            if (typeof shortest !== typeof undefined) {
-              console.log('Updating time estimate...');
-              $('#time').html('in ' + Math.ceil(shortest.duration / 60.0) + ' min');
+              // Update the Uber button with the shortest time
+              var shortest = data[0];
+              if (typeof shortest !== typeof undefined) {
+                console.log('Updating time estimate...');
+                $('#time2').html('in ' + Math.ceil(shortest.duration / 60.0) + ' min');
+              }
             }
-          }
 
         }).error(function(data) {
           console.log('could not load uber');
@@ -113,7 +112,7 @@ angular.module('after8')
           if (typeof $scope.coords.longitude !== typeof undefined) {uberURL += '&' + 'pickup_longitude=' + $scope.coords.longitude;}
           uberURL += '&' + 'dropoff_latitude=' + clubLatitude;
           uberURL += '&' + 'dropoff_longitude=' + clubLongitude;
-          uberURL += '&' + 'dropoff_nickname=' + 'Thinkful';
+          uberURL += '&' + 'dropoff_nickname=' + 'AFTER8';
 
           // Redirect to Uber
           window.location.href = uberURL;

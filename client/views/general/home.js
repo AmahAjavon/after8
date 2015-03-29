@@ -4,7 +4,7 @@
 
 angular.module('after8')
 
-.controller('HomeCtrl', ['$scope', '$location', 'CommonProp', '$firebaseAuth', function($scope, $location, CommonProp, $firebaseAuth) {
+.controller('HomeCtrl', ['$scope', '$location', '$state', 'CommonProp', '$firebaseAuth', function($scope, $location, $state, CommonProp, $firebaseAuth) {
   var firebaseObj = new Firebase('https://after8.firebaseio.com');
   var loginObj = $firebaseAuth(firebaseObj);
   var user = '';
@@ -15,11 +15,12 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-        $location.path('/profile');
+        $state.go('profile');
         console.log('the data is: ', authData.facebook.cachedUserProfile.first_name);
         $scope.username = authData.facebook.cachedUserProfile.first_name;
         $scope.userimage = authData.facebook.cachedUserProfile.picture.data.url;
       }
+
     });
   };
 
@@ -29,11 +30,12 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-        $location.path('/profile');
+        $state.go('profile');
         $scope.username = authData.twitter.username;
         $scope.userimage = authData.twitter.cachedUserProfile.profile_image_url;
 
       }
+
     });
   };
 
@@ -43,10 +45,11 @@ angular.module('after8')
         console.log('Login Failed!', error);
       } else {
         console.log('Authenticated successfully with payload:', authData);
-        $location.path('/profile');
+        $state.go('profile');
         $scope.username = authData.google.cachedUserProfile.given_name;
         $scope.userimage = authData.google.cachedUserProfile.picture;
       }
+
     });
   };
 
@@ -63,7 +66,7 @@ angular.module('after8')
       //Success callback
       console.log('Authentication successful');
       CommonProp.setUser(user.password.email);
-      $location.path('/profile');
+      $state.go('profile');
     }, function(error) {
       //Failure callback
       console.log('Authentication failure');
