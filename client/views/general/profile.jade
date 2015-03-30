@@ -9,7 +9,7 @@ nav.navbar.navbar-inverse
       a.navbar-brand(ui-sref='home') AFTER8
     #navbar.collapse.navbar-collapse
       ul.nav.navbar-nav.navbar-right
-        li: a(ui-sref='faq'): i.fa.fa-info &nbsp; Faq
+        li: a(ui-sref='about'): i.fa.fa-info &nbsp; About
         li: a(ui-sref='contact'): i.fa.fa-at &nbsp; Contact
         li: a(ui-sref='home'): i.fa.fa-sign-out &nbsp; Sign-out
 .container-fluid
@@ -19,7 +19,7 @@ nav.navbar.navbar-inverse
       .row
         .col-lg-5.col-md-5.col-sm-4
         .col-lg-2.col-md-2.col-sm-4.col-xs-12
-          ul.profileName Welcome home {{username}}     
+          ul.profileName.promo1(style='color: #149c82') Welcome home {{username}}     
           img(ng-src='{{user.cachedUserProfile.userimage}}')
         .col-lg-5.col-md-5.col-sm-4
       .row
@@ -51,7 +51,7 @@ nav.navbar.navbar-inverse
                     a.btn.btn-info(href='{{show.url}}') Get Tickets
                     br 
             .row                
-              a(ng-click='uber(index)')
+              a(ng-click='uber(show)')
                 .button
                   p#time Get a ride
                   br        
@@ -81,7 +81,7 @@ nav.navbar.navbar-inverse
                     a.btn.btn-info(href='{{venue.url}}') More infos
                     br
             .row
-              a(href='#', ng-click='uber2(index)')
+              a(href='#', ng-click='uber2(venue)')
                 .button
                   p#time2 Get a ride
                   br                 

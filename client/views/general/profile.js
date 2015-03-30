@@ -15,12 +15,14 @@ angular.module('after8')
     var uberClientId = 'IuEmQipRiQGncyZ4ySFYz1uKdD-uHLZW';
     var uberServerToken = 'm6y2-yeBTpRFxFnCITJN1h5xCCnlVSztRtaLcLsn';
 
+
     $http.get('http://ws.audioscrobbler.com/2.0/?method=geo.getevents&lat='+ $scope.coords.latitude + '&long=' + $scope.coords.longitude + '&distance=150&limit=50&api_key=b93c2762033e97bcdf97392e7d0dd42c&format=json')
     .success(function(data, status, headers, config) {
       console.log(data);
       $scope.shows = data.events.event;
       for (var index = 0; index < $scope.shows.length; index++) {
         // console.log('lastfm geo', $scope.shows[index].venue.location['geo:point']['geo:lat']);
+
 
         var eventLatitude = $scope.shows[index].venue.location['geo:point']['geo:lat'],
         eventLongitude = $scope.shows[index].venue.location['geo:point']['geo:long'];
@@ -29,7 +31,7 @@ angular.module('after8')
         .success(function(result) {
           // console.log('result is', result["prices"]);
 
-          var data = result['prices'];
+          var data = result.prices;
             if (typeof data !== typeof undefined) {
               // Sort Uber products by time to the user's location
               data.sort(function(t0, t1) {
@@ -47,7 +49,7 @@ angular.module('after8')
         }).error(function(err) {
           console.log('could not load uber');
         });
-      }
+
         $scope.uber = function() {
           var uberURL = 'https://m.uber.com/sign-up?';
 
@@ -62,7 +64,7 @@ angular.module('after8')
           // Redirect to Uber
           window.location.href = uberURL;
         };
-
+      }
     }).error(function(data) {
       console.log('could not find this url');
     });
@@ -84,7 +86,7 @@ angular.module('after8')
         .success(function(result) {
           // console.log('result is', result["prices"]);
 
-          var data = result['prices'];
+          var data = result.prices;
             if (typeof data !== typeof undefined) {
               // Sort Uber products by time to the user's location
               data.sort(function(t0, t1) {
@@ -102,7 +104,7 @@ angular.module('after8')
         }).error(function(data) {
           console.log('could not load uber');
         });
-      }
+
         $scope.uber2 = function() {
           var uberURL = 'https://m.uber.com/sign-up?';
 
@@ -117,10 +119,11 @@ angular.module('after8')
           // Redirect to Uber
           window.location.href = uberURL;
         };
-
+      }
     }).error(function(data) {
       console.log('could not find this url');
     });
+
 
     $scope.uploadFile = function(files) {
       var fd = new FormData();
@@ -138,7 +141,6 @@ angular.module('after8')
       }).error(function(data) {
         console.log('Could not upload');
     });
-
   };
 });
 

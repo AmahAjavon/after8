@@ -6,10 +6,9 @@ angular.module('after8', ['ui.router', 'ngMessages', 'geolocation', 'firebase', 
 
     $stateProvider
       .state('home', {url:'/', templateUrl:'/views/general/home.html', controller: 'HomeCtrl'})
-      .state('faq', {url:'/faq', templateUrl:'/views/general/faq.html'})
+      .state('about', {url:'/about', templateUrl:'/views/general/about.html'})
       .state('contact', {url:'/contact', templateUrl:'/views/general/contact.html'})
       .state('register', {url:'/register', templateUrl:'/views/general/register.html', controller: 'RegisterCtrl'})
       .state('profile', {url:'/profile', templateUrl:'/views/general/profile.html', controller: 'ProfileCtrl'})
       .state('feed', {url:'/feed', templateUrl:'/views/general/feed.html', controller:'ChatCtrl'})
-      .state('images', {url:'/images', templateUrl:'/views/general/feed.html', controller:'ImageUpload'})
   }]);

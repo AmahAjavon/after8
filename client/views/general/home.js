@@ -19,8 +19,8 @@ angular.module('after8')
         console.log('the data is: ', authData.facebook.cachedUserProfile.first_name);
         $scope.username = authData.facebook.cachedUserProfile.first_name;
         $scope.userimage = authData.facebook.cachedUserProfile.picture.data.url;
-      }
 
+      }
     });
   };
 
@@ -33,9 +33,7 @@ angular.module('after8')
         $state.go('profile');
         $scope.username = authData.twitter.username;
         $scope.userimage = authData.twitter.cachedUserProfile.profile_image_url;
-
       }
-
     });
   };
 
@@ -49,7 +47,6 @@ angular.module('after8')
         $scope.username = authData.google.cachedUserProfile.given_name;
         $scope.userimage = authData.google.cachedUserProfile.picture;
       }
-
     });
   };
 
@@ -72,6 +69,14 @@ angular.module('after8')
       console.log('Authentication failure');
     });
   };
+
+  // firebaseObj.authAnonymously(function(error, authData) {
+  //     if (error) {
+  //       console.log("Login Failed!", error);
+  //     } else {
+  //       console.log("Authenticated successfully with payload:", authData);
+  //     }
+  //   });
 
 }])
 

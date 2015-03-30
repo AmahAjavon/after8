@@ -1,1 +1,32 @@
-h1 Contact
+nav.navbar.navbar-inverse
+  .container-fluid
+    .navbar-header
+      button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#navbar")
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand(ui-sref='home') AFTER8
+    #navbar.collapse.navbar-collapse
+      ul.nav.navbar-nav.navbar-right
+        li: a(ui-sref='profile'): i.fa.fa-user &nbsp; Profile
+        li: a(ui-sref='about'): i.fa.fa-info &nbsp; About
+        li: a(ui-sref='contact'): i.fa.fa-at &nbsp; Contact
+        li: a(ui-sref='home'): i.fa.fa-sign-out &nbsp; Sign-out
+.container
+  form.form-horizontal
+    h2(style='text-align: center;') Contact AFTER8
+    .form-group
+      label.col-lg-2.control-label(for='contact-name') Name:
+      .col-lg-10
+        input#contact-name.form-control(type='text', placeholder='full Name')
+    .form-group
+      label.col-lg-2.control-label(for='contact-email') Email:
+      .col-lg-10
+        input#contact-email.form-control(type='email', placeholder='you@example.com')
+    .form-group
+      label.col-lg-2.control-label(for='contact-msg') Message:
+      .col-lg-10
+        textarea.form-control(rows='8')
+    a.btn.btn-default(data-dismiss='modal') Close
+    button.btn.btn-success(type='submit') Send message
