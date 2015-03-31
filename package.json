@@ -3,7 +3,7 @@
   "description": "Party App",
   "homepage": "https://github.com/amahajavon/after8",
   "engines": {
-    "node": "0.12.x"
+    "node": "0.10.x"
   },
   "keywords": [
     "gulp",
@@ -25,7 +25,6 @@
   "scripts": {
     "start": "node server/index.js",
     "localhost": "PORT=3333 nodemon -e js,jade server/index.js",
-    "preinstall": "rm -rf node_modules public",
     "postinstall": "bower install && gulp build"
   },
   "license": "MIT",
@@ -33,7 +32,6 @@
     "firechat": "^2.0.1",
     "good": "^5.1.2",
     "good-console": "^4.1.0",
-    "gulp-babel": "^4.0.1",
     "hapi": "^8.4.0",
     "request": "^2.54.0"
   },
