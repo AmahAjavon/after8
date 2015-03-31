@@ -12,10 +12,10 @@ nav.navbar.navbar-default
         li: a(ui-sref='about'): i.fa.fa-info &nbsp; About
         li: a(ui-sref='contact'): i.fa.fa-at &nbsp; Contact
         li: a(ui-sref='home'): i.fa.fa-sign-out &nbsp; Sign-out
-.container-fluid
+.container-fluid(style='background: url("http://wiki-fx.net/wp-content/uploads/2013/08/Black-Background-Collapsar-1080x1920.jpg") no-repeat center center fixed')
   .row
     .col-xs-12
-      img.map(src='http://maps.googleapis.com/maps/api/staticmap?center={{coords.latitude}},{{coords.longitude}}&zoom=16&format=png&sensor=false&size=300x200&maptype=roadmap&style=element:geometry.fill|color:0xf4f4f4&markers=color:red|{{coords.latitude}},{{coords.longitude}}&scale=2', alt='', style='border: 1px solid #C14242;')        
+      img.map(src='http://maps.googleapis.com/maps/api/staticmap?center={{coords.latitude}},{{coords.longitude}}&zoom=16&format=png&sensor=false&size=300x200&maptype=roadmap&style=element:geometry.fill|color:0xf4f4f4&markers=color:red|{{coords.latitude}},{{coords.longitude}}&scale=2', alt='', style='border: 5px solid #C14242;')        
       .row
         .col-lg-5.col-md-5.col-sm-4
         .col-lg-2.col-md-2.col-sm-4.col-xs-12
@@ -24,19 +24,19 @@ nav.navbar.navbar-default
         .col-lg-5.col-md-5.col-sm-4
       .row
         br
-        a.btn.btn-danger(href='#/feed') Chat room
+        a.btn.btn-lg.btn-danger(href='#/feed') Chat room
         br
-        h2 So... What's popping?
+        h2 Let's start the night off!
       .row
         .col-lg-6.col-md-6.col-xs-12
           h3 Shows, Performances, Events in your area 
-          #carousel-events.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid #C14242;')
+          #carousel-events.carousel(style='margin: 30px 30px 30px 30px; border: 5px solid #C14242;')
             label.labelTag list of Events
             br
             .carousel-inner
               .item(ng-class='{active:!$index}', ng-repeat='(index, show) in shows')
                 .col-md-6.col-md-6
-                  img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='400', height='400', style='border: 1px solid #C14242;')
+                  img(src='http://www.pycomall.com/images/P1/Party_Crowd.jpg', src='{{show.image[3]["#text"]}}', width='400', height='400', style='border: 5px solid #C14242;')
                 .col-md-6.col-md-6
                   .row
                     h3(style='color: #C14242') {{ show.title }}
@@ -48,12 +48,12 @@ nav.navbar.navbar-default
                     h5 {{ show.venue.location.street }}
                     h5 {{ show.venue.location.postalcode }}
                   .row  
-                    a.btn.btn-success(href='{{show.url}}') Get Tickets
+                    a.btn.btn-lg.btn-success(href='{{show.url}}') Get Tickets
                     br 
             .row                
               a(ng-click='uber(show)')
                 .button
-                  p#time Get a ride
+                  p#time(style='color: #000;') Get a ride
                   br        
              span.left.carousel-control(href='#carousel-events', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')
@@ -64,7 +64,7 @@ nav.navbar.navbar-default
             
         .col-lg-6.col-md-6.col-xs-12
           h3 Hit the Bars, Nightclubs in town tonight 
-          #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid #C14242;')
+          #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px; border: 5px solid #C14242;')
             label.labelTag list of Clubs
             br
             .carousel-inner
@@ -78,12 +78,12 @@ nav.navbar.navbar-default
                     h5 Foursquare Users checked-in: {{ venue.stats.checkinsCount }}
                     h5 Foursquare Users count: {{ venue.stats.usersCount }}
                   .row
-                    a.btn.btn-success(href='{{venue.url}}') More infos
+                    a.btn.btn-lg.btn-success(href='{{venue.url}}') More infos
                     br
             .row
               a(href='#', ng-click='uber2(venue)')
                 .button
-                  p#time2 Get a ride
+                  p#time2(style='color: #000;') Get a ride
                   br                 
             span.left.carousel-control(href='#carousel-clubs', role='button', data-slide='prev')
                 span.glyphicon.glyphicon-chevron-left(aria-hidden='true')

@@ -42,7 +42,7 @@ angular.module('after8')
               var shortest = data[0];
               if (typeof shortest !== typeof undefined) {
                 console.log('Updating time estimate...');
-                $('#time').html('in ' + Math.ceil(shortest.duration / 60.0) + ' min');
+                $('#time').html('Trip: ' + Math.ceil(shortest.duration / 60.0) + ' min');
               }
             }
 
@@ -97,7 +97,7 @@ angular.module('after8')
               var shortest = data[0];
               if (typeof shortest !== typeof undefined) {
                 console.log('Updating time estimate...');
-                $('#time2').html('in ' + Math.ceil(shortest.duration / 60.0) + ' min');
+                $('#time2').html('Trip: ' + Math.ceil(shortest.duration / 60.0) + ' min');
               }
             }
 

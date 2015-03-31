@@ -99,12 +99,12 @@ a {
   display: inline-block;
   color: #fff;
   text-decoration: none;
-  background:rgba(0,0,0,0.5);
+  // background:rgba(0,0,0,0.5);
   padding: .5rem;
   transition: .6s background;
 }
 a:hover{
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0,0);
 }
 @media screen and (max-width: 500px) {
   div{width:70%;}
@@ -295,9 +295,10 @@ div#navbar.collapse.navbar-collapse{
 #message{
   list-style-type: none;
   // border: 1px solid green;
-  font-size: 20px;
+  font-size: 16px;
   text-align: center;
-  box-shadow: 1px 1px 1px #149c82,2px 2px 0 #149c82,3px 3px 0 #149c82,4px 4px 1px #149c82;
+  color: #C14242;
+  box-shadow: 1px 1px 1px #C14242,2px 2px 0 #C14242,3px 3px 0 #149c82,4px 4px 1px #C14242;
 
 }
 
@@ -305,6 +306,7 @@ div#navbar.collapse.navbar-collapse{
   font-size: 30px;
   list-style-type: none;
   padding-left: 0;
+  color: blue;
   text-align: center;
   position: relative;
 }
@@ -349,11 +351,13 @@ div#navbar.collapse.navbar-collapse{
 }
 
 #time:hover {
-  color: red;
+  color: #C14242;
+  font-size: 18px;
 }
 
 #time2:hover {
-  color: red;
+  color: #C14242;
+  font-size: 18px;
 }
 
 form.form-inline {
