@@ -1,7 +1,7 @@
 {
-  "name": "angular-firebase-todo",
-  "description": "Angular Prototype Application",
-  "homepage": "https://github.com/amahajavon/angular-firebase-todo",
+  "name": "after8",
+  "description": "Party App",
+  "homepage": "https://github.com/amahajavon/after8",
   "engines": {
     "node": "0.12.x"
   },
@@ -19,7 +19,7 @@
   "author": "Amah Ajavon <greatmindsent@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "git://github.com/coding-house-jan2015/angular-prototype.git"
+    "url": "git://github.com/AmahAjavon/after8.git"
   },
   "version": "1.0.0",
   "scripts": {
