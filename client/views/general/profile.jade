@@ -1,4 +1,4 @@
-nav.navbar.navbar-inverse
+nav.navbar.navbar-default
   .container-fluid
     .navbar-header
       button.navbar-toggle.collapsed(data-toggle="collapse", data-target="#navbar")
@@ -19,12 +19,12 @@ nav.navbar.navbar-inverse
       .row
         .col-lg-5.col-md-5.col-sm-4
         .col-lg-2.col-md-2.col-sm-4.col-xs-12
-          ul.profileName.promo1(style='color: #149c82') Welcome home {{username}}     
+          ul.profileName.promo1(style='color: #C14242') Welcome home {{username}}     
           img(ng-src='{{user.cachedUserProfile.userimage}}')
         .col-lg-5.col-md-5.col-sm-4
       .row
         br
-        a.btn.btn-success(href='#/feed') Chat room
+        a.btn.btn-danger(href='#/feed') Chat room
         br
         h2 So... What's popping?
       .row
@@ -39,7 +39,7 @@ nav.navbar.navbar-inverse
                   img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='400', height='400', style='border: 1px solid black;')
                 .col-md-6.col-md-6
                   .row
-                    h3 {{ show.title }}
+                    h3(style='color: #C14242') {{ show.title }}
                     h4 {{ (show.artists.artist).join(', ') }}
                     p {{ show.startDate }}
                   .row
@@ -48,7 +48,7 @@ nav.navbar.navbar-inverse
                     h5 {{ show.venue.location.street }}
                     h5 {{ show.venue.location.postalcode }}
                   .row  
-                    a.btn.btn-info(href='{{show.url}}') Get Tickets
+                    a.btn.btn-success(href='{{show.url}}') Get Tickets
                     br 
             .row                
               a(ng-click='uber(show)')
@@ -70,7 +70,7 @@ nav.navbar.navbar-inverse
             .carousel-inner
               .item(ng-class='{active:!$index}', ng-repeat='(index, venue) in venues')
                   .row
-                    h3 {{ venue.name }}
+                    h3(style='color: #C14242') {{ venue.name }}
                     h4 {{ venue.location.city }}
                   .row
                     p {{ venue.categories[0].shortName }}
@@ -78,7 +78,7 @@ nav.navbar.navbar-inverse
                     h5 Foursquare Users checked-in: {{ venue.stats.checkinsCount }}
                     h5 Foursquare Users count: {{ venue.stats.usersCount }}
                   .row
-                    a.btn.btn-info(href='{{venue.url}}') More infos
+                    a.btn.btn-success(href='{{venue.url}}') More infos
                     br
             .row
               a(href='#', ng-click='uber2(venue)')

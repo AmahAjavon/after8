@@ -19,7 +19,6 @@ angular.module('after8')
         console.log('the data is: ', authData.facebook.cachedUserProfile.first_name);
         $scope.username = authData.facebook.cachedUserProfile.first_name;
         $scope.userimage = authData.facebook.cachedUserProfile.picture.data.url;
-
       }
     });
   };
@@ -70,13 +69,13 @@ angular.module('after8')
     });
   };
 
-  // firebaseObj.authAnonymously(function(error, authData) {
-  //     if (error) {
-  //       console.log("Login Failed!", error);
-  //     } else {
-  //       console.log("Authenticated successfully with payload:", authData);
-  //     }
-  //   });
+  firebaseObj.authAnonymously(function(error, authData) {
+      if (error) {
+        console.log("Login Failed!", error);
+      } else {
+        console.log("Authenticated successfully with payload:", authData);
+      }
+    });
 
 }])
 
@@ -92,3 +91,30 @@ angular.module('after8')
     }
   };
 });
+
+// var vid = document.getElementById("bgvid");
+// var pauseButton = document.querySelector("#polina button");
+//
+// function vidFade() {
+//   vid.classList.add("stopfade");
+// }
+//
+// vid.addEventListener('ended', function()
+// {
+// // only functional if "loop" is removed
+// vid.pause();
+// // to capture IE10
+// vidFade();
+// });
+//
+// $('#title').addClass('animated bounceOutLeft');
+// pauseButton.addEventListener("click", function() {
+//   vid.classList.toggle("stopfade");
+//   if (vid.paused) {
+//     vid.play();
+//     pauseButton.innerHTML = "Pause";
+//   } else {
+//     vid.pause();
+//     pauseButton.innerHTML = "Paused";
+//   }
+// })
