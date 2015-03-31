@@ -15,7 +15,7 @@ nav.navbar.navbar-default
 .container-fluid
   .row
     .col-xs-12
-      img.map(src='http://maps.googleapis.com/maps/api/staticmap?center={{coords.latitude}},{{coords.longitude}}&zoom=16&format=png&sensor=false&size=300x200&maptype=roadmap&style=element:geometry.fill|color:0xf4f4f4&markers=color:red|{{coords.latitude}},{{coords.longitude}}&scale=2', alt='')        
+      img.map(src='http://maps.googleapis.com/maps/api/staticmap?center={{coords.latitude}},{{coords.longitude}}&zoom=16&format=png&sensor=false&size=300x200&maptype=roadmap&style=element:geometry.fill|color:0xf4f4f4&markers=color:red|{{coords.latitude}},{{coords.longitude}}&scale=2', alt='', style='border: 1px solid #C14242;')        
       .row
         .col-lg-5.col-md-5.col-sm-4
         .col-lg-2.col-md-2.col-sm-4.col-xs-12
@@ -30,13 +30,13 @@ nav.navbar.navbar-default
       .row
         .col-lg-6.col-md-6.col-xs-12
           h3 Shows, Performances, Events in your area 
-          #carousel-events.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid black;')
+          #carousel-events.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid #C14242;')
             label.labelTag list of Events
             br
             .carousel-inner
               .item(ng-class='{active:!$index}', ng-repeat='(index, show) in shows')
                 .col-md-6.col-md-6
-                  img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='400', height='400', style='border: 1px solid black;')
+                  img.img-responsive.img-center(src='{{show.image[3]["#text"]}}', width='400', height='400', style='border: 1px solid #C14242;')
                 .col-md-6.col-md-6
                   .row
                     h3(style='color: #C14242') {{ show.title }}
@@ -64,7 +64,7 @@ nav.navbar.navbar-default
             
         .col-lg-6.col-md-6.col-xs-12
           h3 Hit the Bars, Nightclubs in town tonight 
-          #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid black;')
+          #carousel-clubs.carousel(style='margin: 30px 30px 30px 30px; border: 1px solid #C14242;')
             label.labelTag list of Clubs
             br
             .carousel-inner
